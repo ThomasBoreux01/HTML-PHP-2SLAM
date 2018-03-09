@@ -25,12 +25,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
   <body>
-    <form action="recuperation client.php" method="post">
+    <form method="post">
       <p> Numero client: <input type="text" name="numclient" /></p>
     </form>
     <?php //Connection avec la BDD.
-      mysql_connect("localhost", "root", "");
-      mysql_select_db("ppe");
+      try
+      {
+        $bdd = new PDO('mysql:host=localhost;dbname=ppe;charset=utf8', 'root', '');
+      }
+      catch (Exception $e)
+      {
+        die('Erreur : ' . $e->getMessage());
+      }
       $numclient=$_POST['numclient']
       $reponse = mysql_query("SELECT * FROM client where NumClient=$numclient");
     ?>
