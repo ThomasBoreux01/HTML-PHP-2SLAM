@@ -31,9 +31,9 @@
         </div>
         <ul class="nav navbar-nav">
           <li class="active"><a href="assistant.php">Accueil</a></li>
-          <li><a href="rechercheclient.php">Recherche d'un client</a></li>
-          <li><a href="#">Page 2</a></li>
-          <li><a href="#">Page 3</a></li>
+          <li><a href="rechercheclient1.php">Recherche d'un client</a></li>
+          <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
+          <li><a href="affecter1.php">Affectation des visites</a></li>
         </ul>
       </div>
     </nav>
@@ -83,4 +83,8 @@
       ?>
     </div>
   </body>
+  <script src="/www/bootstrap/js/jquery.js"></script>
+  <script src="/www/bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="/www/js/bootstrap.min.js"></script>
 </html>

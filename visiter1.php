@@ -25,6 +25,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
   <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><?php echo $_SESSION['login']; ?></a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="agent.php">Accueil</a></li>
+          <li><a href="visiter1.php">Validation d'une intervention</a></li>
+          <li><a href="#">Page 2</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+      </div>
+    </nav>
     <form action='visiter.php' method="post">
       <p> Commentaire: <input type="text" name="comment"></p>
       <p> Temps passé: <input type="timestamp" name="time"></p>

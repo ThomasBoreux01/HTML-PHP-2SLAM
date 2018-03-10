@@ -25,8 +25,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
   <body>
+		<nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><?php echo $_SESSION['login']; ?></a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="assistant.php">Accueil</a></li>
+          <li><a href="rechercheclient1.php">Recherche d'un client</a></li>
+          <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
+          <li><a href="affecter1.php">Affectation des visites</a></li>
+        </ul>
+      </div>
+    </nav>
 		<div class="formulaire">
-			<form action='affecter.php' method='POST'>
+			<form action='affecter2.php' method='POST'>
 				<select name="technicien" size="1">
 					<?php
 						$reponse = $bdd->query('SELECT * FROM technicien');

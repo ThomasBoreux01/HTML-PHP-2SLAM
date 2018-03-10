@@ -31,14 +31,14 @@
         </div>
         <ul class="nav navbar-nav">
           <li class="active"><a href="assistant.php">Accueil</a></li>
-          <li><a href="rechercheclient.php">Recherche d'un client</a></li>
-          <li><a href="#">Page 2</a></li>
-          <li><a href="#">Page 3</a></li>
+          <li><a href="rechercheclient1.php">Recherche d'un client</a></li>
+          <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
+          <li><a href="affecter1.php">Affectation des visites</a></li>
         </ul>
       </div>
     </nav>
     <div class="container-fluid">
-      <form action='recherche.php' method="post">
+      <form action='rechercheclient2.php' method="post">
         <p> Numero client: <input type="text" name="numclient"></p>
       </form>
   </body>

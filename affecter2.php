@@ -1,13 +1,14 @@
 <?php
   session_start();
-  // echo "Bienvenue " .$_SESSION['login']. " ,Vous êtes maintenant connecté";
   try
   {
-  	$bdd = new PDO('mysql:host=localhost;dbname=ppe;charset=utf8', 'root', '');
+    // On se connecte à MySQL
+    $bdd = new PDO('mysql:host=localhost;dbname=ppe;charset=utf8', 'root', '');
   }
-  catch (Exception $e)
+  catch(Exception $e)
   {
-  	die('Erreur : ' . $e->getMessage());
+    // En cas d'erreur, on affiche un message et on arrête tout
+    die('Erreur : '.$e->getMessage());
   }
 ?>
 <html>
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <title>Accueil</title>
+    <title>Recherche</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
@@ -40,7 +41,22 @@
     </nav>
     <div class="container-fluid">
       <?php
-        echo "Bienvenue " .$_SESSION['login']. " ,Vous êtes maintenant connecté";
+        if(isset($_POST['affecter']))
+        {
+          $technicien = htmlspecialchars(trim($_POST['technicien']));
+          if($technicien)
+          {
+            $requser = $bdd->prepare("INSERT INTO intervention(Matricule) VALUES(:Matricule)");
+            $requser->execute(array(
+              'Matricule' => $technicien
+            ));
+            echo "Intervention affectée";
+          }
+        }
+        else
+        {
+          echo "Intervention échouée";
+        }
       ?>
     </div>
   </body>
