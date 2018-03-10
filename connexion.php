@@ -14,12 +14,12 @@
       if($login == 'assistant' AND $userexist ==1)
       {
         $_SESSION['login']=$userinfo['login'];
-        header("Location: rechercheclient.php");
+        header("Location: assistant.php");
       }
       if($login == 'agent' AND $userexist ==1)
       {
         $_SESSION['login']=$userinfo['login'];
-        header("Location: page2.php");
+        header("Location: agent.php");
       }
     }
   }

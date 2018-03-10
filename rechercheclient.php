@@ -1,9 +1,8 @@
 <?php
   session_start();
-  echo "Bienvenue " .$_SESSION['login']. " vous êtes maintenant connecté";
   try
   {
-  	$bdd = new PDO('mysql:host=localhost;dbname=ppe;charset=utf8', 'root', '');
+  	$bdd = new PDO('mysql:host=localhost;dbname=ppe;charset=utf8','root','');
   }
   catch (Exception $e)
   {
@@ -13,7 +12,7 @@
 <html>
   <head>
     <!-- En-tête de la page -->
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <link href="/www/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -25,7 +24,7 @@
   </head>
   <body>
     <form action='rechercheclient.php' method="post">
-      <p> Numero client: <input type="text" name="numclient" /></p>
+      <p> Numero client: <input type="text" name="numclient"></p>
     </form>
     <?php
       $numclient=$_POST['numclient'];
