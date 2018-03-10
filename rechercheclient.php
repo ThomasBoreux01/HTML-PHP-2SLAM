@@ -66,7 +66,7 @@
           {
         ?>
         <tbody>
-          <tr>
+          <tr class="success">
             <td><?php echo $donnees['NumClient'];?></td>
             <td><?php echo $donnees['RaisonSociale'];?></td>
             <td><?php echo $donnees['SIREN'];?></td>
