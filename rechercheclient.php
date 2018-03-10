@@ -25,12 +25,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
   <body>
-    <form method="post">
+    <form action='rechercheclient.php' method="post">
       <p> Numero client: <input type="text" name="numclient" /></p>
     </form>
     <?php
       $numclient=$_POST['numclient']
-      $reponse = $bdd->query("SELECT * FROM client where NumClient=$numclient");
+      $requser = $bdd->query("SELECT * FROM client where NumClient=$numclient");
     ?>
     <table>
       <tr>
@@ -48,7 +48,7 @@
     </table>
     <?php
       //On affiche les lignes du tableau une à une à l'aide d'une boucle
-      while ($donnees = $reponse->fetch())
+      while ($donnees = $requser->fetch())
       {
     ?>
     <table>
