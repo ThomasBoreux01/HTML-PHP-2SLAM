@@ -28,15 +28,7 @@
     <form method="post">
       <p> Numero client: <input type="text" name="numclient" /></p>
     </form>
-    <?php //Connection avec la BDD.
-      try
-      {
-        $bdd = new PDO('mysql:host=localhost;dbname=ppe;charset=utf8', 'root', '');
-      }
-      catch (Exception $e)
-      {
-        die('Erreur : ' . $e->getMessage());
-      }
+    <?php
       $numclient=$_POST['numclient']
       $reponse = $bdd->query("SELECT * FROM client where NumClient=$numclient");
     ?>
