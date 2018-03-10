@@ -31,38 +31,40 @@
       $numclient=$_POST['numclient'];
       $requser = $bdd->query("SELECT * FROM client where NumClient=$numclient");
     ?>
-    <table>
-      <tr>
-        <td>NumClient</td>
-        <td>RaisonSociale</td>
-        <td>SIREN</td>
-        <td>CodeAPE</td>
-        <td>Adresse</td>
-        <td>TelephoneClient</td>
-        <td>FaxClient</td>
-        <td>Email</td>
-        <td>DureeDeplacement</td>
-        <td>DistanceKM</td>
-      </tr>
-    </table>
-    <?php
-      //On affiche les lignes du tableau une à une à l'aide d'une boucle
-      while ($donnees = $requser->fetch())
-      {
-    ?>
-    <table>
-      <tr>
-        <td><?php echo $donnees['NumClient'];?></td>
-        <td><?php echo $donnees['RaisonSociale'];?></td>
-        <td><?php echo $donnees['SIREN'];?></td>
-        <td><?php echo $donnees['CodeAPE'];?></td>
-        <td><?php echo $donnees['Adresse'];?></td>
-        <td><?php echo $donnees['TelephoneClient'];?></td>
-        <td><?php echo $donnees['FaxClient'];?></td>
-        <td><?php echo $donnees['Email'];?></td>
-        <td><?php echo $donnees['DureeDeplacement'];?></td>
-        <td><?php echo $donnees['DistanceKM'];?></td>
-      </tr>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>NumClient</th>
+          <th>RaisonSociale</th>
+          <th>SIREN</th>
+          <th>CodeAPE</th>
+          <th>Adresse</th>
+          <th>TelephoneClient</th>
+          <th>FaxClient</th>
+          <th>Email</th>
+          <th>DureeDeplacement</th>
+          <th>DistanceKM</th>
+        </tr>
+      </thead>
+      <?php
+        //On affiche les lignes du tableau une à une à l'aide d'une boucle
+        while ($donnees = $requser->fetch())
+        {
+      ?>
+      <tbody>
+        <tr>
+          <td><?php echo $donnees['NumClient'];?></td>
+          <td><?php echo $donnees['RaisonSociale'];?></td>
+          <td><?php echo $donnees['SIREN'];?></td>
+          <td><?php echo $donnees['CodeAPE'];?></td>
+          <td><?php echo $donnees['Adresse'];?></td>
+          <td><?php echo $donnees['TelephoneClient'];?></td>
+          <td><?php echo $donnees['FaxClient'];?></td>
+          <td><?php echo $donnees['Email'];?></td>
+          <td><?php echo $donnees['DureeDeplacement'];?></td>
+          <td><?php echo $donnees['DistanceKM'];?></td>
+        </tr>
+      </tbody>
     </table>
     <?php
       } //fin de la boucle, le tableau contient toute la BDD
