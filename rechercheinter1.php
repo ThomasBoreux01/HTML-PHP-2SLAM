@@ -25,6 +25,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
   <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><?php echo $_SESSION['login']; ?></a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="assistant.php">Accueil</a></li>
+          <li><a href="rechercheclient.php">Recherche d'un client</a></li>
+          <li><a href="rechercheinter.php">Recherche d'une intervention</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+      </div>
+    </nav>
     <div class="container-fluid">
       <form action='rechercheinter.php' method="post">
         <p> Date de l'intervention: <input type="date" name="dateinter"></p>
@@ -34,47 +47,6 @@
         <p> Matricule du technicien: <input type="text" name="matricule"></p>
         <button type="submit" class="btn btn-primary btn-block btn-large">Valider</button>
       </form>
-      <?php
-        $datevisite=$_POST['dateinter'];
-        $matricule=$_POST['matricule'];
-        if ($datevisite)
-        {
-          $requser = $bdd->query("SELECT * FROM intervention where DateVisite=$datevisite");
-        }
-        if ($matricule)
-        {
-          $requser = $bdd->query("SELECT * FROM intervention where Matricule=$matricule");
-        }
-      ?>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Numéro de l'intervention</th>
-            <th>Date de visite</th>
-            <th>Heure de visite</th>
-            <th>Matricule</th>
-            <th>Numéro de client</th>
-          </tr>
-        </thead>
-        <?php
-          //On affiche les lignes du tableau une à une à l'aide d'une boucle
-          while ($donnees = $requser->fetch())
-          {
-        ?>
-        <tbody>
-          <tr class="success">
-            <td><?php echo $donnees['NumIntervention'];?></td>
-            <td><?php echo $donnees['DateVisite'];?></td>
-            <td><?php echo $donnees['HeureVisite'];?></td>
-            <td><?php echo $donnees['Matricule'];?></td>
-            <td><?php echo $donnees['NumClient'];?></td>
-          </tr>
-        </tbody>
-      </table>
-      <?php
-        } //fin de la boucle, le tableau contient toute la BDD
-        $requser->closeCursor(); // Termine le traitement de la requête
-      ?>
     </div>
   </body>
   <script src="/www/bootstrap/js/jquery.js"></script>
