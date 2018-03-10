@@ -38,7 +38,7 @@
         die('Erreur : ' . $e->getMessage());
       }
       $numclient=$_POST['numclient']
-      $reponse = mysql_query("SELECT * FROM client where NumClient=$numclient");
+      $reponse = $bdd->query("SELECT * FROM client where NumClient=$numclient");
     ?>
     <table>
       <tr>
@@ -56,7 +56,7 @@
     </table>
     <?php
       //On affiche les lignes du tableau une à une à l'aide d'une boucle
-      while($donnees = mysql_fetch_array($reponse))
+      while ($donnees = $reponse->fetch())
       {
     ?>
     <table>
@@ -75,6 +75,7 @@
     </table>
     <?php
       } //fin de la boucle, le tableau contient toute la BDD
-      mysql_close(); //deconnection de mysql
+      $reponse->closeCursor(); // Termine le traitement de la requête
     ?>
-?>
+  </body>
+</html>
