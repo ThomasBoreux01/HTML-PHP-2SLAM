@@ -23,51 +23,66 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
   <body>
-    <form action='rechercheclient.php' method="post">
-      <p> Numero client: <input type="text" name="numclient"></p>
-    </form>
-    <?php
-      $numclient=$_POST['numclient'];
-      $requser = $bdd->query("SELECT * FROM client where NumClient=$numclient");
-    ?>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>NumClient</th>
-          <th>RaisonSociale</th>
-          <th>SIREN</th>
-          <th>CodeAPE</th>
-          <th>Adresse</th>
-          <th>TelephoneClient</th>
-          <th>FaxClient</th>
-          <th>Email</th>
-          <th>DureeDeplacement</th>
-          <th>DistanceKM</th>
-        </tr>
-      </thead>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><?php $_SESSION['login'] ?></a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="assistant.php">Accueil</a></li>
+          <li><a href="rechercheclient.php">Recherche d'un client</a></li>
+          <li><a href="#">Page 2</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <form action='rechercheclient.php' method="post">
+        <p> Numero client: <input type="text" name="numclient"></p>
+      </form>
       <?php
-        //On affiche les lignes du tableau une à une à l'aide d'une boucle
-        while ($donnees = $requser->fetch())
-        {
+        $numclient=$_POST['numclient'];
+        $requser = $bdd->query("SELECT * FROM client where NumClient=$numclient");
       ?>
-      <tbody>
-        <tr>
-          <td><?php echo $donnees['NumClient'];?></td>
-          <td><?php echo $donnees['RaisonSociale'];?></td>
-          <td><?php echo $donnees['SIREN'];?></td>
-          <td><?php echo $donnees['CodeAPE'];?></td>
-          <td><?php echo $donnees['Adresse'];?></td>
-          <td><?php echo $donnees['TelephoneClient'];?></td>
-          <td><?php echo $donnees['FaxClient'];?></td>
-          <td><?php echo $donnees['Email'];?></td>
-          <td><?php echo $donnees['DureeDeplacement'];?></td>
-          <td><?php echo $donnees['DistanceKM'];?></td>
-        </tr>
-      </tbody>
-    </table>
-    <?php
-      } //fin de la boucle, le tableau contient toute la BDD
-      $requser->closeCursor(); // Termine le traitement de la requête
-    ?>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>NumClient</th>
+            <th>RaisonSociale</th>
+            <th>SIREN</th>
+            <th>CodeAPE</th>
+            <th>Adresse</th>
+            <th>TelephoneClient</th>
+            <th>FaxClient</th>
+            <th>Email</th>
+            <th>DureeDeplacement</th>
+            <th>DistanceKM</th>
+          </tr>
+        </thead>
+        <?php
+          //On affiche les lignes du tableau une à une à l'aide d'une boucle
+          while ($donnees = $requser->fetch())
+          {
+        ?>
+        <tbody>
+          <tr>
+            <td><?php echo $donnees['NumClient'];?></td>
+            <td><?php echo $donnees['RaisonSociale'];?></td>
+            <td><?php echo $donnees['SIREN'];?></td>
+            <td><?php echo $donnees['CodeAPE'];?></td>
+            <td><?php echo $donnees['Adresse'];?></td>
+            <td><?php echo $donnees['TelephoneClient'];?></td>
+            <td><?php echo $donnees['FaxClient'];?></td>
+            <td><?php echo $donnees['Email'];?></td>
+            <td><?php echo $donnees['DureeDeplacement'];?></td>
+            <td><?php echo $donnees['DistanceKM'];?></td>
+          </tr>
+        </tbody>
+      </table>
+      <?php
+        } //fin de la boucle, le tableau contient toute la BDD
+        $requser->closeCursor(); // Termine le traitement de la requête
+      ?>
+    </div>
   </body>
 </html>
