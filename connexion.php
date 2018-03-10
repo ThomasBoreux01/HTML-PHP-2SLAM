@@ -14,7 +14,7 @@
       if($login == 'assistant' AND $userexist ==1)
       {
         $_SESSION['login']=$userinfo['login'];
-        header("Location: page1.php");
+        header("Location: rechercheclient.php");
       }
       if($login == 'agent' AND $userexist ==1)
       {
