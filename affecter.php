@@ -16,7 +16,9 @@
     if($technicien)
     {
       $requser = $bdd->prepare("INSERT INTO intervention(Matricule) VALUES(:Matricule)");
-      $requser->execute(array($technicien));
+      $requser->execute(array(
+        'Matricule' => $technicien
+      ));
       echo "Intervention affectée";
     }
   }

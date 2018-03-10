@@ -38,6 +38,11 @@
         </ul>
       </div>
     </nav>
+    <div class="container-fluid">
+      <?php
+        echo "Bienvenue " .$_SESSION['login']. " ,Vous êtes maintenant connecté";
+      ?>
+    </div>
   </body>
   <script src="/www/bootstrap/js/jquery.js"></script>
   <script src="/www/bootstrap/js/bootstrap.min.js"></script>

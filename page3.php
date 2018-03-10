@@ -10,8 +10,6 @@
 		// En cas d'erreur, on affiche un message et on arrête tout
   	die('Erreur : '.$e->getMessage());
 	}
-	echo "Bienvenue " .$_SESSION['login']. " ,Vous êtes maintenant connecté";
-	$reponse = $bdd->query('SELECT * FROM technicien');
 ?>
 <html>
   <head>
@@ -31,16 +29,17 @@
 			<form action='affecter.php' method='POST'>
 				<select name="technicien" size="1">
 					<?php
+						$reponse = $bdd->query('SELECT * FROM technicien');
 						while ($donnees = $reponse->fetch())
 						{
 					?>
-					<option> <?php echo $donnees['Matricule_technicien']; ?>
+					<option> <?php echo $donnees['Matricule']; ?>
 					<?php
 						}
 						$reponse->closeCursor(); // Termine le traitement de la requête
 					?>
 				</select>
-				<button type="submit" class="btn btn-primary btn-block btn-large" name="affecter"> Affecter</button>
+				<button type="submit" class="btn btn-primary btn-block btn-large" name="affecter">Affecter</button>
 			</form>
 		</div>
   </body>
