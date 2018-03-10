@@ -15,13 +15,13 @@
     $technicien = htmlspecialchars(trim($_POST['technicien']));
     if($technicien)
     {
-      $requser = $bdd->prepare("INSERT INTO intervention(Matricule_technicien) VALUES(:Matricule_technicien)");
+      $requser = $bdd->prepare("INSERT INTO intervention(Matricule) VALUES(:Matricule)");
       $requser->execute(array($technicien));
       echo "Intervention affectée";
     }
   }
   else
   {
-    
+    echo "Intervention échouée";
   }
 ?>

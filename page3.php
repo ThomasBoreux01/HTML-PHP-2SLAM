@@ -28,7 +28,7 @@
   </head>
   <body>
 		<div class="formulaire">
-			<form action='try { $bdd = new PDO('mysql:host=localhost;dbname=ppe;charset=utf8', 'root', ''); } catch(Exception $e) { die('Erreur : '.$e->getMessage()); }' method='POST'>
+			<form action='affecter.php' method='POST'>
 				<select name="technicien" size="1">
 					<?php
 						while ($donnees = $reponse->fetch())
