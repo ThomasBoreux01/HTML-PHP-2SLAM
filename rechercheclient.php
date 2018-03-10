@@ -29,7 +29,7 @@
       <p> Numero client: <input type="text" name="numclient" /></p>
     </form>
     <?php
-      $numclient=$_POST['numclient']
+      $numclient=$_POST['numclient'];
       $requser = $bdd->query("SELECT * FROM client where NumClient=$numclient");
     ?>
     <table>
