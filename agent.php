@@ -1,6 +1,6 @@
 <?php
   session_start();
-  echo "Bienvenue " .$_SESSION['login']. " ,Vous êtes maintenant connecté";
+  //echo "Bienvenue " .$_SESSION['login']. " ,Vous êtes maintenant connecté";
   try
   {
   	$bdd = new PDO('mysql:host=localhost;dbname=ppe;charset=utf8', 'root', '');
@@ -25,7 +25,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
   <body>
-    
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><?php $_SESSION['login'] ?></a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="agent.php">Accueil</a></li>
+          <li><a href="#">Page 1</a></li>
+          <li><a href="#">Page 2</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+      </div>
+    </nav>
   </body>
   <script src="/www/bootstrap/js/jquery.js"></script>
   <script src="/www/bootstrap/js/bootstrap.min.js"></script>
