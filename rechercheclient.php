@@ -13,6 +13,7 @@
   <head>
     <!-- En-tête de la page -->
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
     <link href="/www/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -26,7 +27,7 @@
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#"><?php $_SESSION['login'] ?></a>
+          <a class="navbar-brand" href="#"><?php echo $_SESSION['login']; ?></a>
         </div>
         <ul class="nav navbar-nav">
           <li class="active"><a href="assistant.php">Accueil</a></li>
