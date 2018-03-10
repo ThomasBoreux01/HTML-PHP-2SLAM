@@ -67,7 +67,7 @@
     </table>
     <?php
       } //fin de la boucle, le tableau contient toute la BDD
-      $reponse->closeCursor(); // Termine le traitement de la requête
+      $requser->closeCursor(); // Termine le traitement de la requête
     ?>
   </body>
 </html>
