@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <title>Accueil</title>
+    <title>Recherche</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
@@ -28,9 +28,11 @@
     <div class="container-fluid">
       <form action='rechercheinter.php' method="post">
         <p> Date de l'intervention: <input type="date" name="dateinter"></p>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Valider</button>
       </form>
       <form action='rechercheinter.php' method="post">
         <p> Matricule du technicien: <input type="text" name="matricule"></p>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Valider</button>
       </form>
       <?php
         $datevisite=$_POST['dateinter'];

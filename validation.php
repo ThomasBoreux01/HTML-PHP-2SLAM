@@ -1,13 +1,13 @@
 <?php
-  session_start();
-  // echo "Bienvenue " .$_SESSION['login']. " ,Vous êtes maintenant connecté";
+  // Page d'index du site.
+  session_start ();
   try
   {
-  	$bdd = new PDO('mysql:host=localhost;dbname=ppe;charset=utf8', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=ppe;charset=utf8','root','');
   }
   catch (Exception $e)
   {
-  	die('Erreur : ' . $e->getMessage());
+    die('Erreur : ' . $e->getMessage());
   }
 ?>
 <html>
@@ -25,19 +25,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
   <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#"><?php echo $_SESSION['login']; ?></a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="assistant.php">Accueil</a></li>
-          <li><a href="rechercheclient.php">Recherche d'un client</a></li>
-          <li><a href="rechercheinter.php">Recherche d'une intervention</a></li>
-          <li><a href="#">Page 3</a></li>
-        </ul>
-      </div>
-    </nav>
+    <form action='visiter.php' method="post">
+      <p> Commentaire: <input type="text" name="comment"></p>
+      <p> Temps passé: <input type="timestamp" name="time"></p>
+      <button type="submit" class="btn btn-primary btn-block btn-large">Valider</button>
+    </form>
   </body>
   <script src="/www/bootstrap/js/jquery.js"></script>
   <script src="/www/bootstrap/js/bootstrap.min.js"></script>
