@@ -39,14 +39,42 @@
       </div>
     </nav>
     <div class="container-fluid">
-      <form action='rechercheinter2.php' method="post">
-        <p> Date de l'intervention: <input type="date" name="dateinter"></p>
-        <button type="submit" class="btn btn-primary btn-block btn-large">Valider</button>
-      </form>
-      <form action='rechercheinter3.php' method="post">
-        <p> Matricule du technicien: <input type="text" name="matricule"></p>
-        <button type="submit" class="btn btn-primary btn-block btn-large">Valider</button>
-      </form>
+      <?php
+        $matricule=$_POST['matricule'];
+        if ($matricule)
+        {
+          $requser = $bdd->query("SELECT * FROM intervention where Matricule=$matricule");
+        }
+      ?>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Numéro de l'intervention</th>
+            <th>Date de visite</th>
+            <th>Heure de visite</th>
+            <th>Matricule</th>
+            <th>Numéro de client</th>
+          </tr>
+        </thead>
+        <?php
+          //On affiche les lignes du tableau une à une à l'aide d'une boucle
+          while ($donnees = $requser->fetch())
+          {
+        ?>
+        <tbody>
+          <tr class="success">
+            <td><?php echo $donnees['NumIntervention'];?></td>
+            <td><?php echo $donnees['DateVisite'];?></td>
+            <td><?php echo $donnees['HeureVisite'];?></td>
+            <td><?php echo $donnees['Matricule'];?></td>
+            <td><?php echo $donnees['NumClient'];?></td>
+          </tr>
+        </tbody>
+      </table>
+      <?php
+        } //fin de la boucle, le tableau contient toute la BDD
+        $requser->closeCursor(); // Termine le traitement de la requête
+      ?>
     </div>
   </body>
   <script src="/www/bootstrap/js/jquery.js"></script>

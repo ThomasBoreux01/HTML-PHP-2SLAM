@@ -41,14 +41,9 @@
     <div class="container-fluid">
       <?php
         $datevisite=$_POST['dateinter'];
-        $matricule=$_POST['matricule'];
         if ($datevisite)
         {
           $requser = $bdd->query("SELECT * FROM intervention where DateVisite=$datevisite");
-        }
-        if ($matricule)
-        {
-          $requser = $bdd->query("SELECT * FROM intervention where Matricule=$matricule");
         }
       ?>
       <table class="table table-bordered">
