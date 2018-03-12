@@ -1,13 +1,14 @@
 <?php
-  // Page d'index du site.
-  session_start ();
+  session_start();
   try
   {
-    $bdd = new PDO('mysql:host=localhost;dbname=ppe;charset=utf8','root','');
+    // On se connecte à MySQL
+    $bdd = new PDO('mysql:host=localhost;dbname=ppe;charset=utf8', 'root', '');
   }
-  catch (Exception $e)
+  catch(Exception $e)
   {
-    die('Erreur : ' . $e->getMessage());
+    // En cas d'erreur, on affiche un message et on arrête tout
+    die('Erreur : '.$e->getMessage());
   }
 ?>
 <html>
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <title>Recherche</title>
+    <title>Outil statistique</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
@@ -40,20 +41,22 @@
     </nav>
     <div class="container-fluid">
       <?php
-        $datevisite=$_POST['dateinter'];
-        if ($datevisite)
+        if(isset($_POST['visualiser']))
         {
-          $requser = $bdd->query("SELECT * FROM intervention WHERE DateVisite=$datevisite");
+          $technicien = htmlspecialchars(trim($_POST['technicien']));
+          if($technicien)
+          {
+            $requser = $bdd->prepare("SELECT * FROM V_stats WHERE Matricule=$technicien ");
+          }
         }
       ?>
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>Numéro de l'intervention</th>
-            <th>Date de visite</th>
-            <th>Heure de visite</th>
             <th>Matricule</th>
-            <th>Numéro de client</th>
+            <th>Nombre d'interventions</th>
+            <th>Nombre </th>
+            <th>Matricule</th>
           </tr>
         </thead>
         <?php
@@ -67,7 +70,6 @@
             <td><?php echo $donnees['DateVisite'];?></td>
             <td><?php echo $donnees['HeureVisite'];?></td>
             <td><?php echo $donnees['Matricule'];?></td>
-            <td><?php echo $donnees['NumClient'];?></td>
           </tr>
         </tbody>
       </table>
