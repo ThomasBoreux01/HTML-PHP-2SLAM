@@ -48,7 +48,7 @@
           $month = htmlspecialchars(trim($_POST['month']));
           if($technicien & $month)
           {
-            $requser = $bdd->prepare("SELECT * FROM intervention WHERE MONTH(DateVisite) = $month & Matricule = $technicien");
+            $requser = $bdd->prepare("SELECT intervention.Matricule, COUNT(intervention.NumIntervention), SUM(intervention.HeureVisite), SUM(client.DistanceKM) FROM intervention, client WHERE MONTH(DateVisite)=$month & Matricule=$technicien & client.NumClient=intervention.NumClient");
           }
         }
       ?>
@@ -57,8 +57,8 @@
           <tr>
             <th>Matricule</th>
             <th>Nombre d'interventions</th>
-            <th>Nombre</th>
-            <th>Matricule</th>
+            <th>Distance parcouru</th>
+            <th>Nombre d'heures</th>
           </tr>
         </thead>
         <?php
@@ -68,11 +68,10 @@
         ?>
         <tbody>
           <tr class="success">
+            <td><?php echo $donnees['Matricule'];?></td>
             <td><?php echo $donnees['NumIntervention'];?></td>
-            <td><?php echo $donnees['DateVisite'];?></td>
             <td><?php echo $donnees['DistanceKM'];?></td>
             <td><?php echo $donnees['HeureVisite'];?></td>
-            <td><?php echo $donnees['Matricule'];?></td>
           </tr>
         </tbody>
       </table>
