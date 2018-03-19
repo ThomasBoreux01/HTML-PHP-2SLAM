@@ -44,8 +44,8 @@
       <?php
         if(isset($_POST['visualiser']))
         {
-          $technicien = htmlspecialchars(trim($_POST['technicien']));
-          $month = htmlspecialchars(trim($_POST['month']));
+          $technicien = $_POST['technicien'];
+          $month = $_POST['month'];
           if($technicien & $month)
           {
             $requser = $bdd->prepare("SELECT intervention.Matricule, COUNT(intervention.NumIntervention), SUM(intervention.HeureVisite) FROM intervention WHERE Matricule=$technicien");
