@@ -45,9 +45,10 @@
         if(isset($_POST['visualiser']))
         {
           $technicien = htmlspecialchars(trim($_POST['technicien']));
-          if($technicien)
+          $month = htmlspecialchars(trim($_POST['month']));
+          if($technicien & $month)
           {
-            $requser = $bdd->prepare("SELECT * FROM V_stats WHERE Matricule=$technicien ");
+            $requser = $bdd->prepare("SELECT * FROM intervention WHERE MONTH(DateVisite) = $month & Matricule = $technicien");
           }
         }
       ?>
@@ -56,7 +57,7 @@
           <tr>
             <th>Matricule</th>
             <th>Nombre d'interventions</th>
-            <th>Nombre </th>
+            <th>Nombre</th>
             <th>Matricule</th>
           </tr>
         </thead>
@@ -69,6 +70,7 @@
           <tr class="success">
             <td><?php echo $donnees['NumIntervention'];?></td>
             <td><?php echo $donnees['DateVisite'];?></td>
+            <td><?php echo $donnees['DistanceKM'];?></td>
             <td><?php echo $donnees['HeureVisite'];?></td>
             <td><?php echo $donnees['Matricule'];?></td>
           </tr>

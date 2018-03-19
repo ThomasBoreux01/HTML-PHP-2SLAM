@@ -42,16 +42,30 @@
 			<form action='stats2.php' method='POST'>
 				<select name="technicien" size="1">
 					<?php
-						$reponse = $bdd->query('SELECT Matricule FROM V_stats');
+						$reponse = $bdd->query('SELECT intervention.Matricule FROM intervention, technicien WHERE intervention.Matricule = technicien.Matricule');
 						while ($donnees = $reponse->fetch())
 						{
 					?>
-					<option> <?php echo $donnees['Matricule']; ?>
+					<option> <?php echo $donnees['Matricule']; ?> </option>
 					<?php
 						}
 						$reponse->closeCursor(); // Termine le traitement de la requête
 					?>
 				</select>
+        <select name="month" size="1">
+          <option value="1" selected> Janvier </option>
+          <option value="2"> Février </option>
+          <option value="3"> Mars </option>
+          <option value="4"> Avril </option>
+          <option value="5"> Mail </option>
+          <option value="6"> Juin </option>
+          <option value="7"> Juillet </option>
+          <option value="8"> Août </option>
+          <option value="9"> Septembre </option>
+          <option value="10"> Octobre </option>
+          <option value="11"> Novembre </option>
+          <option value="12"> Décembre </option>
+        </select>
 				<button type="submit" class="btn btn-primary btn-block btn-large" name="visualiser">Visualiser</button>
 			</form>
 		</div>
