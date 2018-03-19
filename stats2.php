@@ -48,7 +48,7 @@
           $month = $_POST['month'];
           if($technicien & $month)
           {
-            $requser = $bdd->prepare("SELECT intervention.Matricule AS Matricule, COUNT(intervention.NumIntervention) AS NumIntervention, SUM(intervention.HeureVisite) AS HeureVisite FROM intervention WHERE Matricule=$technicien");
+            $requser = $bdd->query("SELECT intervention.Matricule AS Matricule, COUNT(intervention.NumIntervention) AS NumIntervention, SUM(intervention.HeureVisite) AS HeureVisite FROM intervention WHERE Matricule=$technicien");
           }
         }
       ?>
