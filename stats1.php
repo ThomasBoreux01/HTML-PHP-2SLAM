@@ -46,7 +46,7 @@
 						while ($donnees = $reponse->fetch())
 						{
 					?>
-					<option> <?php echo $donnees['Matricule']; ?> </option>
+					<option selected> <?php echo $donnees['Matricule']; ?> </option>
 					<?php
 						}
 						$reponse->closeCursor(); // Termine le traitement de la requête

@@ -46,7 +46,7 @@
         {
           $technicien = htmlspecialchars(trim($_POST['technicien']));
           $month = htmlspecialchars(trim($_POST['month']));
-          if($technicien & $month)
+          if($technicien)
           {
             $requser = $bdd->prepare("SELECT intervention.Matricule, COUNT(intervention.NumIntervention), SUM(intervention.HeureVisite), SUM(client.DistanceKM) FROM intervention, client WHERE MONTH(DateVisite)=$month & Matricule=$technicien & client.NumClient=intervention.NumClient");
           }
