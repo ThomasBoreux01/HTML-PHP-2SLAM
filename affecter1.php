@@ -41,18 +41,20 @@
     </nav>
 		<div class="formulaire">
 			<form action='affecter2.php' method='POST'>
-				<select name="technicien" size="1">
-					<?php
-						$reponse = $bdd->query('SELECT * FROM technicien');
-						while ($donnees = $reponse->fetch())
-						{
-					?>
-					<option> <?php echo $donnees['Matricule']; ?>
-					<?php
-						}
-						$reponse->closeCursor(); // Termine le traitement de la requête
-					?>
-				</select>
+				<p> Matricule :
+					<select name="technicien" size="1">
+						<?php
+							$reponse = $bdd->query('SELECT * FROM technicien');
+							while ($donnees = $reponse->fetch())
+							{
+						?>
+						<option> <?php echo $donnees['Matricule']; ?>
+						<?php
+							}
+							$reponse->closeCursor(); // Termine le traitement de la requête
+						?>
+					</select>
+				</p>
 				<button type="submit" class="btn btn-primary btn-block btn-large" name="affecter">Affecter</button>
 			</form>
 		</div>
