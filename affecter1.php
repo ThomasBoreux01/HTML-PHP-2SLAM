@@ -9,7 +9,7 @@
 	{
 		// En cas d'erreur, on affiche un message et on arrête tout
   	die('Erreur : '.$e->getMessage());
-	}
+	} 
 ?>
 <html>
   <head>
@@ -35,30 +35,50 @@
           <li><a href="rechercheclient1.php">Recherche d'un client</a></li>
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
           <li><a href="affecter1.php">Affectation des visites</a></li>
-					<li><a href="stats1.php">Statistiques des techniciens</a></li>
+          <li><a href="deconnexion.php">Déconnexion</a></li>
         </ul>
       </div>
     </nav>
 		<div class="formulaire">
-			<form action='affecter2.php' method='POST'>
-				<p> Matricule :
-					<select name="technicien" size="1">
-						<?php
-							$reponse = $bdd->query('SELECT * FROM technicien');
-							while ($donnees = $reponse->fetch())
-							{
-						?>
-						<option> <?php echo $donnees['Matricule']; ?>
-						<?php
-							}
-							$reponse->closeCursor(); // Termine le traitement de la requête
-						?>
-					</select>
-				</p>
+			<form method='POST'>
+        Choisir le technicien a affecté :
+				<select id="technicien" name="technicien">
+					<?php
+            $reponse = $bdd->query('SELECT * FROM technicien');
+            while ($donnees = $reponse->fetch()){
+              $Matricule = $donnees['Matricule'];
+              echo "<OPTION VALUE='$Matricule'> $Matricule </OPTION>\n";
+            }
+            $reponse->closeCursor();
+            ?>
+          </select>
+          <br/>
+          
+          Choisir l'intervention :
+          <select id="intervention" name="intervention">
+          <?php
+            $reponse = $bdd->query('SELECT * FROM intervention');
+            while ($donnees = $reponse->fetch()){
+              $valeur = $donnees['NumIntervention'];
+              echo "<OPTION VALUE='$valeur'> $valeur </OPTION>\n";
+            }
+            $reponse->closeCursor(); 
+            ?>
+        </select>
+        <br/>
+
 				<button type="submit" class="btn btn-primary btn-block btn-large" name="affecter">Affecter</button>
 			</form>
 		</div>
   </body>
+  <?php
+  if(isset($_POST['affecter'])){ 
+    $mat = $_POST["technicien"];
+    $int = $_POST["intervention"];
+    $sql = $bdd->query("UPDATE intervention SET Matricule=$mat WHERE NumIntervention=$int");
+
+
+  }?>
   <script src="/www/bootstrap/js/jquery.js"></script>
   <script src="/www/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
