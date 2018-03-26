@@ -76,6 +76,8 @@
     $mat = $_POST["technicien"];
     $int = $_POST["intervention"];
     $sql = $bdd->query("UPDATE intervention SET Matricule=$mat WHERE NumIntervention=$int");
+    $message='Affectation réussi'; 
+    echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
 
 
   }?>
