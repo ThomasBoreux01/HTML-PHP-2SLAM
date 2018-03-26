@@ -43,7 +43,7 @@
 				<p> Matricule :
           <select name="technicien" size="1">
 					  <?php
-						  $reponse = $bdd->query('SELECT technicien.Matricule FROM intervention, technicien WHERE intervention.Matricule = technicien.Matricule');
+						  $reponse = $bdd->query('SELECT technicien.Matricule FROM technicien');
 						  while ($donnees = $reponse->fetch())
 						  {
 					  ?>
