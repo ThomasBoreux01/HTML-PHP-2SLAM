@@ -77,8 +77,8 @@
         </tbody>
       </table>
       <?php
-        } //fin de la boucle, le tableau contient toute la BDD
-        $requser->closeCursor(); // Termine le traitement de la requête
+          } //fin de la boucle, le tableau contient toute la BDD
+          $requser->closeCursor(); // Termine le traitement de la requête
       ?>
     </div>
   </body>
