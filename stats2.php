@@ -32,7 +32,7 @@
           <a class="navbar-brand" href="#"><?php echo $_SESSION['login']; ?></a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="assistant.php">Accueil</a></li>
+          <li><a href="assistant.php">Accueil</a></li>
           <li><a href="rechercheclient1.php">Recherche d'un client</a></li>
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
           <li><a href="affecter1.php">Affectation des visites</a></li>
@@ -48,7 +48,7 @@
           $month = $_POST['month'];
           if($technicien & $month)
           {
-            $requser = $bdd->query("SELECT intervention.Matricule AS Matricule, COUNT(intervention.NumIntervention) AS NumIntervention, SUM(intervention.HeureVisite) AS HeureVisite FROM intervention WHERE Matricule=$technicien");
+            $requser = $bdd->query("SELECT COUNT(intervention.NumIntervention) AS NumIntervention, SUM(intervention.HeureVisite) AS HeureVisite, MONTH(intervention.DateVisite) AS Mois, YEAR(intervention.DateVisite) AS Annee FROM intervention WHERE intervention.Matricule=$technicien") GROUP BY MONTH(intervention.DateVisite), YEAR(intervention.DateVisite);
           }
         }
       ?>
@@ -58,6 +58,8 @@
             <th>Matricule</th>
             <th>Nombre d'interventions</th>
             <th>Nombre d'heures</th>
+            <th>Mois</th>
+            <th>Année</th>
           </tr>
         </thead>
         <?php
@@ -67,9 +69,11 @@
         ?>
         <tbody>
           <tr class="success">
-            <td><?php echo $donnees['Matricule'];?></td>
+            <td><?php echo $technicien;?></td>
             <td><?php echo $donnees['NumIntervention'];?></td>
             <td><?php echo $donnees['HeureVisite'];?></td>
+            <td><?php echo $données['Mois'];?></td>
+            <td><?php echo $données['Année'];?></td>
           </tr>
         </tbody>
       </table>

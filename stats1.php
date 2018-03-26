@@ -30,7 +30,7 @@
           <a class="navbar-brand" href="#"><?php echo $_SESSION['login']; ?></a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="assistant.php">Accueil</a></li>
+          <li><a href="assistant.php">Accueil</a></li>
           <li><a href="rechercheclient1.php">Recherche d'un client</a></li>
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
           <li><a href="affecter1.php">Affectation des visites</a></li>
@@ -53,22 +53,6 @@
 						  $reponse->closeCursor(); // Termine le traitement de la requête
 				    ?>
 				  </select>
-        </p>
-        <p> Mois :
-          <select name="month" size="1">
-            <option value="1" selected> Janvier </option>
-            <option value="2"> Février </option>
-            <option value="3"> Mars </option>
-            <option value="4"> Avril </option>
-            <option value="5"> Mail </option>
-            <option value="6"> Juin </option>
-            <option value="7"> Juillet </option>
-            <option value="8"> Août </option>
-            <option value="9"> Septembre </option>
-            <option value="10"> Octobre </option>
-            <option value="11"> Novembre </option>
-            <option value="12"> Décembre </option>
-          </select>
         </p>
 				<button type="submit" class="btn btn-primary btn-block btn-large" name="visualiser">Visualiser</button>
 			</form>
