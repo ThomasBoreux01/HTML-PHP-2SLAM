@@ -45,8 +45,7 @@
         if(isset($_POST['visualiser']))
         {
           $technicien = $_POST['technicien'];
-          $month = $_POST['month'];
-          if($technicien & $month)
+          if($technicien)
           {
             $requser = $bdd->query("SELECT COUNT(intervention.NumIntervention) AS NumIntervention, SUM(intervention.HeureVisite) AS HeureVisite, MONTH(intervention.DateVisite) AS Mois, YEAR(intervention.DateVisite) AS Annee FROM intervention WHERE intervention.Matricule=$technicien GROUP BY MONTH(intervention.DateVisite), YEAR(intervention.DateVisite)");
           }
