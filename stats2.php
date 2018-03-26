@@ -72,7 +72,7 @@
             <td><?php echo $donnees['NumIntervention'];?></td>
             <td><?php echo $donnees['HeureVisite'];?></td>
             <td><?php echo $donnees['Mois'];?></td>
-            <td><?php echo $donnees['Année'];?></td>
+            <td><?php echo $donnees['Annee'];?></td>
           </tr>
         </tbody>
       </table>
