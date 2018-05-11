@@ -31,10 +31,9 @@
           <a class="navbar-brand" href="#"><?php echo $_SESSION['login']; ?></a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="agent.php">Accueil</a></li>
-          <li><a href="visiter1.php">Validation d'une intervention</a></li>
-          <li><a href="#">Page 2</a></li>
-          <li><a href="#">Page 3</a></li>
+          <li><a href="agent.php">Accueil</a></li>
+          <li class="active"><a href="visiter1.php">Validation d'une intervention</a></li>
+		  <li><a href="deconnexion.php">Déconnexion</a></li>
         </ul>
       </div>
     </nav>

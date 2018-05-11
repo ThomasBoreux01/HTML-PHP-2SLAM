@@ -16,10 +16,15 @@
         $_SESSION['login']=$userinfo['login'];
         header("Location: assistant.php");
       }
-      if($login == 'agent' AND $userexist ==1)
+      elseif($login == 'agent' AND $userexist ==1)
       {
         $_SESSION['login']=$userinfo['login'];
         header("Location: agent.php");
+      }
+      else {
+        echo 'Vous allez être redirigé dans 5 secondes';
+        sleep(5);
+        header('Location: index.php');
       }
     }
   }

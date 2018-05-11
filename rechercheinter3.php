@@ -31,11 +31,12 @@
           <a class="navbar-brand" href="#"><?php echo $_SESSION['login']; ?></a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="assistant.php">Accueil</a></li>
-          <li><a href="rechercheclient1.php">Recherche d'un client</a></li>
+          <li><a href="assistant.php">Accueil</a></li>
+          <li class="active"><a href="rechercheclient1.php">Recherche d'un client</a></li>
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
           <li><a href="affecter1.php">Affectation des visites</a></li>
           <li><a href="stats1.php">Statistiques des techniciens</a></li>
+          <li><a href="deconnexion.php">Déconnexion</a></li>
         </ul>
       </div>
     </nav>
