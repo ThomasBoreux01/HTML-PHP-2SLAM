@@ -14,7 +14,6 @@
   <head>
     <!-- En-tête de la page -->
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/style.css">
     <link href="/www/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -60,6 +59,7 @@
           </tr>
         </thead>
         <?php
+          $numintervention = $donnees['NumIntervention'];
           //On affiche les lignes du tableau une à une à l'aide d'une boucle
           while ($donnees = $requser->fetch())
           {
@@ -96,7 +96,7 @@
       $heure = $_POST["heure"];
       $matricule = $_POST["matricule"];
       $num = $_POST["numClient"];
-    	$sql = $bdd->query('UPDATE intervention SET DateVisite=$date, HeureVisite=$heure, Matricule=$matricule, NumClient=$num WHERE NumIntervention=$donnees['NumIntervention']');
+    	$sql = $bdd->query("UPDATE intervention SET DateVisite=$date, HeureVisite=$heure, Matricule=$matricule, NumClient=$num WHERE NumIntervention=$numintervention");
     	$message='Modification réussi';
     	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
       $sql->closeCursor(); // Termine le traitement de la requête
