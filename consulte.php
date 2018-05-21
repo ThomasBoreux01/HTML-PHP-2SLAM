@@ -74,7 +74,7 @@
         </thead>
         <?php
           //On affiche les lignes du tableau une à une à l'aide d'une boucle
-          while ($donnees = $requser->fetch())
+          while ($donnees = $sql->fetch())
           {
         ?>
         <tbody>
@@ -90,7 +90,7 @@
       </table>
       <?php
         } //fin de la boucle, le tableau contient toute la BDD
-        $requser->closeCursor(); // Termine le traitement de la requête
+        $sql->closeCursor(); // Termine le traitement de la requête
       ?>
     </div>
   </body>
