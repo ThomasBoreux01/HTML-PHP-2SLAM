@@ -59,10 +59,11 @@
           </tr>
         </thead>
         <?php
-          $numintervention = $donnees['NumIntervention'];
+          $numintervention=$donnees['NumIntervention'];
           //On affiche les lignes du tableau une à une à l'aide d'une boucle
           while ($donnees = $requser->fetch())
           {
+            $numintervention=$donnees['NumIntervention'];
         ?>
         <tbody>
           <tr class="success">

@@ -59,10 +59,10 @@
           </tr>
         </thead>
         <?php
-        $numclient = $donnees['NumClient'];
           //On affiche les lignes du tableau une à une à l'aide d'une boucle
           while ($donnees = $requser->fetch())
           {
+            $numclient=$donnees['NumClient'];
         ?>
         <tbody>
           <tr class="success">
