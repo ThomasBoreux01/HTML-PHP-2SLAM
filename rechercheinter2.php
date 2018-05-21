@@ -60,6 +60,7 @@
           </tr>
         </thead>
         <?php
+        $numclient = $donnees['NumClient'];
           //On affiche les lignes du tableau une à une à l'aide d'une boucle
           while ($donnees = $requser->fetch())
           {
@@ -96,7 +97,7 @@
       $heure = $_POST["heure"];
       $matricule = $_POST["matricule"];
       $num = $_POST["numClient"];
-      $sql = $bdd->query("UPDATE intervention SET DateVisite=$date, HeureVisite=$heure, Matricule=$matricule, NumClient=$num WHERE NumIntervention=$donnees['NumIntervention']");
+      $sql = $bdd->query("UPDATE intervention SET DateVisite=$date, HeureVisite=$heure, Matricule=$matricule, NumClient=$num WHERE NumIntervention=$numclient");
       $message='Modification réussi';
       echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
       $sql->closeCursor(); // Termine le traitement de la requête
