@@ -41,8 +41,8 @@
       </div>
     </nav>
     <div class="container-fluid">
-      <form action='rechercheclient2.php' method="post">
-        <p> Numero client: <input required="required" type="text" name="numclient"></p>
+      <form action='pdf.php' method="post">
+        <p> Numero intervention: <input required="required" type="text" name="numinter"></p>
         <button type="submit" class="btn btn-primary btn-block btn-large" name="rechercher">Rechercher client</button>
       </form>
     </div>

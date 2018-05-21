@@ -35,6 +35,7 @@
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
           <li><a href="affecter1.php">Affectation des visites</a></li>
           <li><a href="stats1.php">Statistiques des techniciens</a></li>
+          <li><a href="creapdf.php">Création d'un PDF</a></li>
           <li><a href="deconnexion.php">Déconnexion</a></li>
         </ul>
       </div>
@@ -84,7 +85,44 @@
         $requser->closeCursor(); // Termine le traitement de la requête
       ?>
     </div>
+    <div class="formulaire">
+			<form method='POST'>
+        <p> Raison Sociale: <input required="required" type="text" name="raison"></p>
+        <p> SIREN: <input required="required" type="text" name="siren"></p>
+        <p> Code APE: <input required="required" type="text" name="codeape"></p>
+        <p> Adresse: <input required="required" type="text" name="adresse"></p>
+        <p> Telephone: <input required="required" type="text" name="telephone"></p>
+        <p> FAX: <input required="required" type="text" name="fax"></p>
+        <p> Email: <input required="required" type="text" name="email"></p>
+        <p> Duree Deplacement: <input required="required" type="text" name="duree"></p>
+        <p> Distance KM: <input required="required" type="text" name="distancekm"></p>
+        <p> Numero contrat: <input required="required" type="text" name="numcontrat"></p>
+        <p> Numero agence: <input required="required" type="text" name="numagence"></p>
+        <p> Code Region: <input required="required" type="text" name="coderegion"></p>
+        </br>
+				<button type="submit" class="btn btn-primary btn-block btn-large" name="modifier">Modifier</button>
+			</form>
+		</div>
   </body>
+  <?php
+  	if(isset($_POST['modifier'])){
+      $raison = $_POST["raison"];
+      $siren = $_POST["siren"];
+      $codeape = $_POST["codeape"];
+      $adresse = $_POST["adresse"];
+      $telephone = $_POST["telephone"];
+      $fax = $_POST["fax"];
+      $email = $_POST["email"];
+      $duree = $_POST["duree"];
+      $distancekm = $_POST["distancekm"];
+      $numcontrat = $_POST["numcontrat"];
+      $numagence = $_POST["numagence"];
+      $coderegion = $_POST["coderegion"];
+    	$sql = $bdd->query("UPDATE client SET RaisonSociale=$raison, SIREN=$siren, CodeAPE=$codeape, Adresse=$adresse, TelephoneClient=$telephone, FaxClient=$fax, Email=$email, DureeDeplacement=$duree, DistanceKM=$distancekm, NumContrat=$numcontrat, NumAgence=$numagence, CodeRegion=$coderegion  WHERE NumClient=$donnees['NumClient']");
+    	$message='Modification réussi';
+    	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+  	}
+	?>
   <script src="/www/bootstrap/js/jquery.js"></script>
   <script src="/www/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

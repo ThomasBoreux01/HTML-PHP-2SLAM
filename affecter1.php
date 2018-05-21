@@ -9,7 +9,7 @@
 	{
 		// En cas d'erreur, on affiche un message et on arrête tout
   	die('Erreur : '.$e->getMessage());
-	} 
+	}
 ?>
 <html>
   <head>
@@ -36,6 +36,7 @@
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
           <li class="active"><a href="affecter1.php">Affectation des visites</a></li>
           <li><a href="stats1.php">Statistiques des techniciens</a></li>
+					<li><a href="creapdf.php">Création d'un PDF</a></li>
           <li><a href="deconnexion.php">Déconnexion</a></li>
         </ul>
       </div>
@@ -54,7 +55,7 @@
             ?>
           </select>
           <br/>
-          
+
           Choisir l'intervention :
           <select id="intervention" name="intervention">
           <?php
@@ -63,7 +64,7 @@
               $valeur = $donnees['NumIntervention'];
               echo "<OPTION VALUE='$valeur'> $valeur </OPTION>\n";
             }
-            $reponse->closeCursor(); 
+            $reponse->closeCursor();
             ?>
         </select>
         <br/>
@@ -73,15 +74,14 @@
 		</div>
   </body>
   <?php
-  if(isset($_POST['affecter'])){ 
-    $mat = $_POST["technicien"];
-    $int = $_POST["intervention"];
-    $sql = $bdd->query("UPDATE intervention SET Matricule=$mat WHERE NumIntervention=$int");
-    $message='Affectation réussi'; 
-    echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-
-
-  }?>
+  	if(isset($_POST['affecter'])){
+    	$mat = $_POST["technicien"];
+    	$int = $_POST["intervention"];
+    	$sql = $bdd->query("UPDATE intervention SET Matricule=$mat WHERE NumIntervention=$int");
+    	$message='Affectation réussi';
+    	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+  	}
+	?>
   <script src="/www/bootstrap/js/jquery.js"></script>
   <script src="/www/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

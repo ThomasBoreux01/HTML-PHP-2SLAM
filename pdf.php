@@ -8,7 +8,7 @@
   {
   	die('Erreur : ' . $e->getMessage());
   }
-  
+
   require('fpdf.php');
 
 $pdf = new FPDF("P","cm","A4");
@@ -21,12 +21,13 @@ $pdf->AddPage();
 $pdf->SetFillColor(96,96,96);
 $pdf->SetTextColor(255,255,255);
 
-$reponse = $bdd->query('SELECT * FROM intervention ');
+$numinter=$_POST['numinter'];
+$reponse = $bdd->query("SELECT * FROM intervention where NumIntervention=$numinter");
 
 $pdf->SetXY(3,3);
 for($i=0;$i<sizeof($header);$i++)
     $pdf->cell(3.5,1,$header[$i],1,0,'C',1);
-  
+
 $pdf->SetFillColor(0xdd,0xdd,0xdd);
 $pdf->SetTextColor(0,0,0);
 $pdf->SetFont('Arial','',10);
