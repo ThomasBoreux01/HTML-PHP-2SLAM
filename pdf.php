@@ -21,7 +21,7 @@ $pdf->AddPage();
 $pdf->SetFillColor(96,96,96);
 $pdf->SetTextColor(255,255,255);
 
-$numinter=$_POST['numinter'];
+$numinter=$_POST['intervention'];
 $reponse = $bdd->query("SELECT * FROM intervention where NumIntervention=$numinter");
 
 $pdf->SetXY(3,3);
@@ -45,6 +45,6 @@ while($donnees = $reponse->fetch())
    $fond=!$fond;
   }
 
-
+$reponse->closeCursor(); // Termine le traitement de la requête
 $pdf->Output();
 ?>

@@ -38,10 +38,22 @@
         </ul>
       </div>
     </nav>
-    <form action='visiter.php' method="post">
-      <p> Commentaire: <input type="text" name="comment"></p>
-      <p> Temps passé: <input type="timestamp" name="time"></p>
-      <button type="submit" class="btn btn-primary btn-block btn-large">Valider</button>
+    <form action='visiter2.php' method="post">
+      <p> Intervention :
+        <select name="intervention" size="1">
+          <?php
+            $reponse = $bdd->query('SELECT intervention.NumIntervention  AS NumIntervention FROM intervention, controler WHERE intervention.NumIntervention=controler.NumIntervention');
+            while ($donnees = $reponse->fetch())
+            {
+          ?>
+          <option selected> <?php echo $donnees['NumIntervention']; ?> </option>
+          <?php
+            }
+            $reponse->closeCursor(); // Termine le traitement de la requête
+          ?>
+        </select>
+      </p>
+      <button type="submit" class="btn btn-primary btn-block btn-large" name="Valider">Valider</button>
     </form>
   </body>
   <script src="/www/bootstrap/js/jquery.js"></script>

@@ -79,7 +79,29 @@
         $requser->closeCursor(); // Termine le traitement de la requête
       ?>
     </div>
+    <div class="formulaire">
+			<form method='POST'>
+        <p> Date de visite: <input required="required" type="date" name="date"></p>
+        <p> Heure de visite: <input required="required" type="time" name="heure"></p>
+        <p> Matricule: <input required="required" type="text" name="matricule"></p>
+        <p> Numéro du client: <input required="required" type="text" name="numClient"></p>
+        </br>
+				<button type="submit" class="btn btn-primary btn-block btn-large" name="modifier">Modifier</button>
+			</form>
+		</div>
   </body>
+  <?php
+    if(isset($_POST['modifier'])){
+      $date = $_POST["date"];
+      $heure = $_POST["heure"];
+      $matricule = $_POST["matricule"];
+      $num = $_POST["numClient"];
+      $sql = $bdd->query("UPDATE intervention SET DateVisite=$date, HeureVisite=$heure, Matricule=$matricule, NumClient=$num WHERE NumIntervention=$donnees['NumIntervention']");
+      $message='Modification réussi';
+      echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+      $sql->closeCursor(); // Termine le traitement de la requête
+    }
+	?>
   <script src="/www/bootstrap/js/jquery.js"></script>
   <script src="/www/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

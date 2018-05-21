@@ -41,21 +41,30 @@
     </nav>
     <div class="container-fluid">
       <?php
+        $inter = $_POST['intervention'];
+      ?>
+      <form method="post">
+        <p> Commentaire: <input type="text" name="comment"></p>
+        <p> Temps passé: <input type="timestamp" name="time"></p>
+        <button type="submit" class="btn btn-primary btn-block btn-large" name="visiter">Valider</button>
+      </form>
+      <?php
         if(isset($_POST['visiter']))
         {
-          $comment = htmlspecialchars(trim($_POST['comment']));
-          $time = htmlspecialchars(trim($_POST['time']));
+          $comment = $_POST['comment'];
+          $time = $_POST['time'];
           if($comment&&$time)
           {
-            $requser = $bdd->prepare("INSERT INTO controler(commentaire, tempspasse) VALUES(:commentaire, tempspasse)");
+            $requser = $bdd->prepare("UPDATE controler SET TempsPasse=$time, Commentaire=$comment WHERE NumIntervention=$inter");
             $requser->execute(array($comment, $time));
             echo "Visite validée";
           }
         }
         else
         {
-          echo "Visite échouée";
+          echo "Visite non validée";
         }
+        $sql->closeCursor(); // Termine le traitement de la requête
       ?>
     </div>
   </body>

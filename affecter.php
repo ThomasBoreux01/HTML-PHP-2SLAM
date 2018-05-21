@@ -46,7 +46,7 @@
         Choisir le technicien a affecté :
 				<select id="technicien" name="technicien">
 					<?php
-            $reponse = $bdd->query('SELECT * FROM technicien');
+            $reponse = $bdd->query('SELECT technicien.Matricule As Matricule FROM technicien, client, intervention WHERE technicien.NumAgence=client.NumAgence AND client.NumClient=intervention.NumClient');
             while ($donnees = $reponse->fetch()){
               $Matricule = $donnees['Matricule'];
               echo "<OPTION VALUE='$Matricule'> $Matricule </OPTION>\n";
@@ -78,6 +78,7 @@
     	$sql = $bdd->query("UPDATE intervention SET Matricule=$mat WHERE NumIntervention=$int");
     	$message='Affectation réussi';
     	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+			$sql->closeCursor();
   	}
 	?>
   <script src="/www/bootstrap/js/jquery.js"></script>

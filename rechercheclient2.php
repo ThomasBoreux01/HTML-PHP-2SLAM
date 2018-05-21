@@ -121,6 +121,7 @@
     	$sql = $bdd->query("UPDATE client SET RaisonSociale=$raison, SIREN=$siren, CodeAPE=$codeape, Adresse=$adresse, TelephoneClient=$telephone, FaxClient=$fax, Email=$email, DureeDeplacement=$duree, DistanceKM=$distancekm, NumContrat=$numcontrat, NumAgence=$numagence, CodeRegion=$coderegion  WHERE NumClient=$donnees['NumClient']");
     	$message='Modification réussi';
     	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+      $sql->closeCursor(); // Termine le traitement de la requête
   	}
 	?>
   <script src="/www/bootstrap/js/jquery.js"></script>

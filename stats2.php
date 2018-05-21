@@ -43,13 +43,19 @@
     </nav>
     <div class="container-fluid">
       <?php
-        if(isset($_POST['visualiser']))
-        {
+        if(isset($_POST['visualiser'])){
           $technicien = $_POST['technicien'];
-          if($technicien)
+          $mois = $_POST['mois'];
+          if($technicien&&$mois)
           {
-            $requser = $bdd->query("SELECT COUNT(intervention.NumIntervention) AS NumIntervention, SUM(intervention.HeureVisite) AS HeureVisite, MONTH(intervention.DateVisite) AS Mois, YEAR(intervention.DateVisite) AS Annee FROM intervention WHERE intervention.Matricule=$technicien GROUP BY MONTH(intervention.DateVisite), YEAR(intervention.DateVisite)");
+            $requser = $bdd->query("SELECT COUNT(intervention.NumIntervention) AS NumIntervention, SUM(intervention.HeureVisite) AS HeureVisite, MONTH(intervention.DateVisite) AS Mois, YEAR(intervention.DateVisite) AS Annee FROM intervention WHERE intervention.Matricule=$technicien AND Mois=$mois GROUP BY MONTH(intervention.DateVisite), YEAR(intervention.DateVisite)");
           }
+          else{
+            echo "Erreur";
+          }
+        }
+        else {
+          echo "Erreur";
         }
       ?>
       <table class="table table-bordered">

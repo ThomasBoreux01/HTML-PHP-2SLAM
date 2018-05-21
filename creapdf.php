@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <title>Recherche</title>
+    <title>Création PDF</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
@@ -42,8 +42,21 @@
     </nav>
     <div class="container-fluid">
       <form action='pdf.php' method="post">
-        <p> Numero intervention: <input required="required" type="text" name="numinter"></p>
-        <button type="submit" class="btn btn-primary btn-block btn-large" name="rechercher">Rechercher client</button>
+        <p> Intervention :
+          <select name="intervention" size="1">
+					  <?php
+						  $reponse = $bdd->query('SELECT intervention.NumIntervention  AS NumIntervention FROM intervention WHERE intervention.Matricule IS NOT NULL');
+						  while ($donnees = $reponse->fetch())
+						  {
+					  ?>
+					  <option selected> <?php echo $donnees['NumIntervention']; ?> </option>
+					  <?php
+						  }
+						  $reponse->closeCursor(); // Termine le traitement de la requête
+				    ?>
+				  </select>
+        </p>
+        <button type="submit" class="btn btn-primary btn-block btn-large" name="rechercher">PDF</button>
       </form>
     </div>
   </body>
