@@ -32,6 +32,7 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="agent.php">Accueil</a></li>
           <li><a href="visiter1.php">Validation d'une intervention</a></li>
+          <li><a href="consulte.php">Consultation</a></li>
 		      <li><a href="deconnexion.php">Déconnexion</a></li>
         </ul>
       </div>

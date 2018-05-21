@@ -34,6 +34,7 @@
         <ul class="nav navbar-nav">
           <li><a href="agent.php">Accueil</a></li>
           <li class="active"><a href="validation.php">Validation d'une intervention</a></li>
+          <li><a href="consulte.php">Consultation</a></li>
           <li><a href="deconnexion.php">Déconnexion</a></li>
         </ul>
       </div>

@@ -55,7 +55,6 @@
             ?>
           </select>
           <br/>
-
           Choisir l'intervention :
           <select id="intervention" name="intervention">
           <?php
@@ -68,7 +67,6 @@
             ?>
         </select>
         <br/>
-
 				<button type="submit" class="btn btn-primary btn-block btn-large" name="affecter">Affecter</button>
 			</form>
 		</div>
