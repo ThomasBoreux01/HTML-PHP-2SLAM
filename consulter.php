@@ -38,23 +38,21 @@
       </div>
     </nav>
     <div class="container-fluid">
-      <div class="formulaire">
-  			<form method='POST'>
-          Choisir le matricule à consulter :
-  				<select id="technicien" name="technicien">
-  					<?php
-              $reponse = $bdd->query('SELECT * FROM technicien');
-              while ($donnees = $reponse->fetch()){
-                $Matricule = $donnees['MatriculeT'];
-                echo "<OPTION VALUE='$Matricule'> $Matricule </OPTION>\n";
-              }
-              $reponse->closeCursor();
-            ?>
-          </select>
-          <br/>
-  				<button type="submit" class="btn btn-primary btn-block btn-large" name="consulter">Consulter</button>
-  			</form>
-  		</div>
+  		<form method='POST'>
+        Choisir le matricule à consulter :
+  			<select id="technicien" name="technicien">
+  				<?php
+            $reponse = $bdd->query('SELECT * FROM technicien');
+            while ($donnees = $reponse->fetch()){
+              $Matricule = $donnees['MatriculeT'];
+              echo "<OPTION VALUE='$Matricule'> $Matricule </OPTION>\n";
+            }
+            $reponse->closeCursor();
+          ?>
+        </select>
+        <br/>
+  			<button type="submit" class="btn btn-primary btn-block btn-large" name="consulter">Consulter</button>
+  		</form>
       <?php
       	if(isset($_POST['consulter'])){
         	$mat = $_POST["technicien"];

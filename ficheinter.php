@@ -179,10 +179,15 @@
       $heure = $_POST["heure"];
       $matricule = $_POST["matricule"];
       $num = $_POST["numClient"];
-      $sql = $bdd->query("UPDATE intervention SET Date_Visite=$date, Heure_Visite=$heure, MatriculeT=$matricule, Numero_Client=$num WHERE Numero_Intervention=$intervention");
-      $message='Modification réussi';
-      echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-      $sql->closeCursor(); // Termine le traitement de la requête
+      $sql = "UPDATE intervention SET Date_Visite=$date, Heure_Visite=$heure, MatriculeT=$matricule, Numero_Client=$num WHERE Numero_Intervention=$intervention";
+      if($bdd->query($sql) === TRUE) {
+        $message='Modification réussie';
+      	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+      } else {
+        $message='Modification échouée'.$bdd->error;
+      	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+      }
+      $bdd->close();
     }
   ?>
   <script src="/www/bootstrap/js/jquery.js"></script>

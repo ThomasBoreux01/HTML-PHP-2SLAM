@@ -124,10 +124,15 @@
       $distancekm = $_POST["distancekm"];
       $numcontrat = $_POST["numcontrat"];
       $numagence = $_POST["numagence"];
-      $requser = $bdd->query("UPDATE client SET Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, Numero_de_contrat=$numcontrat, Numero_Agence=$numagence WHERE Numero_Client=$numclient");
-      $message='Modification réussi';
-      echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-      $requser->closeCursor();
+      $sql = "UPDATE client SET Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, Numero_de_contrat=$numcontrat, Numero_Agence=$numagence WHERE Numero_Client=$numclient";
+      if($bdd->query($sql) === TRUE) {
+        $message='Modification réussie';
+        echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+      } else {
+        $message='Modification échouée'.$bdd->error;
+        echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+      }
+      $bdd->close();
     }
   ?>
   <script src="/www/bootstrap/js/jquery.js"></script>

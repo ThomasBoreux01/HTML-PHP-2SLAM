@@ -39,7 +39,7 @@
     </nav>
     <div class="container-fluid">
       <?php
-        echo "Bienvenue " .$_SESSION['nom']. ", vous êtes connecté";
+        echo "Bienvenue " .$_SESSION['nom']. ", vous êtes connecté !";
       ?>
     </div>
   </body>

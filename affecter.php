@@ -75,10 +75,15 @@
   	if(isset($_POST['affecter'])){
     	$mat = $_POST["technicien"];
     	$int = $_POST["intervention"];
-    	$sql = $bdd->query("UPDATE intervention SET MatriculeT=$mat WHERE Numero_Intervention=$int");
-    	$message='Affectation réussi';
-    	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-			$sql->closeCursor();
+			$sql = "UPDATE intervention SET MatriculeT=$mat WHERE Numero_Intervention=$int";
+    	if($bdd->query($sql) === TRUE) {
+				$message='Affectation réussie';
+	    	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+			} else {
+				$message='Affectation échouée'.$bdd->error;
+	    	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+			}
+			$bdd->close();
   	}
 	?>
   <script src="/www/bootstrap/js/jquery.js"></script>
