@@ -41,7 +41,9 @@
     </nav>
     <div class="container-fluid">
       <?php
-        $numclient=$_POST['numclient'];
+        if(isset($_POST['rechercher'])){
+          $numclient=$_POST['numclient'];
+        }
         $requser = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
       ?>
       <table class="table table-bordered">

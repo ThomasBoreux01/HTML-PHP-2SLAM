@@ -37,6 +37,7 @@
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
           <li><a href="affecter.php">Affectation des visites</a></li>
           <li><a href="stats1.php">Statistiques des techniciens</a></li>
+          <li><a href="creapdf.php">Création d'un PDF</a></li>
           <li><a href="deconnexion.php">Déconnexion</a></li>
         </ul>
       </div>
@@ -48,7 +49,7 @@
           $mois = $_POST['mois'];
           if($technicien&&$mois)
           {
-            $requser = $bdd->query("SELECT COUNT(intervention.Numero_Intervention) AS Numero_Intervention, SUM(intervention.Heure_Visite) AS Heure_Visite, MONTH(intervention.Date_Visite) AS Mois, YEAR(intervention.Date_Visite) AS Annee FROM intervention WHERE intervention.MatriculeT=$technicien AND Mois=$mois");
+            $requser = $bdd->query("SELECT COUNT(intervention.Numero_Intervention) AS Numero_Intervention, SUM(intervention.Heure_Visite) AS Heure_Visite, MONTH(intervention.Date_Visite) AS Mois, YEAR(intervention.Date_Visite) AS Annee FROM intervention WHERE intervention.MatriculeT=$technicien");
           }
           else{
             echo "Erreur";
