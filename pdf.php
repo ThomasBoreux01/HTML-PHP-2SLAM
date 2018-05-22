@@ -36,11 +36,11 @@ $fond=0;
 
 while($donnees = $reponse->fetch())
   {
-   $pdf->cell(3.5,0.7,$donnees['NumIntervention'],1,0,'C',$fond);
-   $pdf->cell(3.5,0.7,$donnees['DateVisite'],1,0,'C',$fond);
-   $pdf->cell(3.5,0.7,$donnees['HeureVisite'],1,0,'C',$fond);
-   $pdf->cell(3.5,0.7,$donnees['Matricule'],1,0,'C',$fond);
-   $pdf->cell(3.5,0.7,$donnees['NumClient'],1,0,'C',$fond);
+   $pdf->cell(3.5,0.7,$donnees['Numero_Intervention'],1,0,'C',$fond);
+   $pdf->cell(3.5,0.7,$donnees['Date_Visite'],1,0,'C',$fond);
+   $pdf->cell(3.5,0.7,$donnees['Heure_Visite'],1,0,'C',$fond);
+   $pdf->cell(3.5,0.7,$donnees['MatriculeT'],1,0,'C',$fond);
+   $pdf->cell(3.5,0.7,$donnees['Numero_Client'],1,0,'C',$fond);
    $pdf->SetXY(3,$pdf->GetY()+0.7);
    $fond=!$fond;
   }
