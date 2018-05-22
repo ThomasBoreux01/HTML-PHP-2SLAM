@@ -9,6 +9,26 @@
   	die('Erreur : ' . $e->getMessage());
   }
 ?>
+<?php
+  if(isset($_POST['modifier'])){
+    $numclient = $_POST["numclient"];
+    $raison = $_POST["raison"];
+    $siren = $_POST["siren"];
+    $codeape = $_POST["codeape"];
+    $adresse = $_POST["adresse"];
+    $telephone = $_POST["telephone"];
+    $fax = $_POST["fax"];
+    $email = $_POST["email"];
+    $duree = $_POST["duree"];
+    $distancekm = $_POST["distancekm"];
+    $numcontrat = $_POST["numcontrat"];
+    $numagence = $_POST["numagence"];
+    $requser = $bdd->query("UPDATE client SET Numero_Client=$numclient, Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, Numero_de_contrat=$numcontrat, Numero_Agence=$numagence WHERE Numero_Client=$numclient");
+    $message='Modification réussi';
+    echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+    $requser->closeCursor();
+  }
+?>
 <html>
   <head>
     <!-- En-tête de la page -->
@@ -41,23 +61,6 @@
     </nav>
     <div class="container-fluid">
       <?php
-        if(isset($_POST['modifier'])){
-          $numclient = $_POST["numclient"];
-          $raison = $_POST["raison"];
-          $siren = $_POST["siren"];
-          $codeape = $_POST["codeape"];
-          $adresse = $_POST["adresse"];
-          $telephone = $_POST["telephone"];
-          $fax = $_POST["fax"];
-          $email = $_POST["email"];
-          $duree = $_POST["duree"];
-          $distancekm = $_POST["distancekm"];
-          $numcontrat = $_POST["numcontrat"];
-          $numagence = $_POST["numagence"];
-          $requser = $bdd->query("UPDATE client SET Numero_Client=$numclient, Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, Numero_de_contrat=$numcontrat, Numero_Agence=$numagence WHERE Numero_Client=$numclient");
-          $message='Modification réussi';
-          echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-        }
         $sql = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
       ?>
       <table class="table table-bordered">

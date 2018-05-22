@@ -43,11 +43,11 @@
     <div class="container-fluid">
       <form action='rechercheinter2.php' method="post">
         <p> Date de l'intervention: <input type="date" name="dateinter"></p>
-        <button type="submit" class="btn btn-primary btn-block btn-large">Valider</button>
+        <button type="submit" class="btn btn-primary btn-block btn-large" name="valider">Valider</button>
       </form>
       <form action='rechercheinter3.php' method="post">
         <p> Matricule du technicien: <input type="text" name="matricule"></p>
-        <button type="submit" class="btn btn-primary btn-block btn-large">Valider</button>
+        <button type="submit" class="btn btn-primary btn-block btn-large" name="valider">Valider</button>
       </form>
     </div>
   </body>

@@ -31,7 +31,7 @@
         </div>
         <ul class="nav navbar-nav">
           <li><a href="assistant.php">Accueil</a></li>
-          <li><a href="rechercheclient1.php">Recherche d'un client</a></li>
+          <li class="active"><a href="rechercheclient1.php">Recherche d'un client</a></li>
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
           <li><a href="affecter.php">Affectation des visites</a></li>
           <li><a href="stats1.php">Statistiques des techniciens</a></li>
@@ -42,11 +42,11 @@
     </nav>
     <div class="container-fluid">
       <?php
-        if(isset($_POST['valider'])){
-          $datevisite=$_POST['dateinter'];
-          if ($datevisite)
+        if(isset($_POST['modifier'])){
+          $intervention=$_POST['intervention'];
+          if ($intervention)
           {
-            $requser = $bdd->query("SELECT * FROM intervention WHERE Date_Visite=$datevisite");
+            $requser = $bdd->query("SELECT * FROM intervention where Numero_Intervention=$intervention");
           }
         }
       ?>
@@ -80,26 +80,29 @@
         </tbody>
       </table>
     </div>
-    <div class="container-fluid">
-      <form action='modifinter.php' method="post">
-        <p> Intervention :
-          <select name="intervention" size="1">
-					  <?php
-						  $reponse = $bdd->query("SELECT intervention.Numero_Intervention FROM intervention WHERE Date_Visite=$datevisite");
-						  while ($donnees = $reponse->fetch())
-						  {
-					  ?>
-					  <option selected> <?php echo $donnees['Numero_Intervention']; ?> </option>
-					  <?php
-						  }
-						  $reponse->closeCursor(); // Termine le traitement de la requête
-				    ?>
-				  </select>
-        </p>
-        <button type="submit" class="btn btn-primary btn-block btn-large" name="modifier">Modifier</button>
-      </form>
-    </div>
+    <div class="formulaire">
+			<form method='POST'>
+        <p> Date de visite: <input required="required" type="date" name="date"></p>
+        <p> Heure de visite: <input required="required" type="time" name="heure"></p>
+        <p> Matricule: <input required="required" type="text" name="matricule"></p>
+        <p> Numéro du client: <input required="required" type="text" name="numClient"></p>
+        </br>
+				<button type="submit" class="btn btn-primary btn-block btn-large" name="modifier">Modifier</button>
+			</form>
+		</div>
   </body>
+  <?php
+    if(isset($_POST['modifier'])){
+      $date = $_POST["date"];
+      $heure = $_POST["heure"];
+      $matricule = $_POST["matricule"];
+      $num = $_POST["numClient"];
+      $sql = $bdd->query("UPDATE intervention SET Date_Visite=$date, Heure_Visite=$heure, MatriculeT=$matricule, Numero_Client=$num WHERE Numero_Intervention=$numintervention");
+      $message='Modification réussi';
+      echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+      $sql->closeCursor(); // Termine le traitement de la requête
+    }
+  ?>
   <script src="/www/bootstrap/js/jquery.js"></script>
   <script src="/www/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
