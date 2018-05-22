@@ -72,12 +72,12 @@
             <th>Distance en KM</th>
           </tr>
         </thead>
-        <?php
-          //On affiche les lignes du tableau une à une à l'aide d'une boucle
-          while ($donnees = $reponse->fetch())
-          {
-        ?>
         <tbody>
+          <?php
+            //On affiche les lignes du tableau une à une à l'aide d'une boucle
+            while ($donnees = $reponse->fetch())
+            {
+          ?>
           <tr class="success">
             <td><?php echo $donnees['Numero_Intervention'];?></td>
             <td><?php echo $donnees['Date_Visite'];?></td>
@@ -87,11 +87,11 @@
             <td><?php echo $donnees['Distance_KM'];?></td>
           </tr>
         </tbody>
+        <?php
+          } //fin de la boucle, le tableau contient toute la BDD
+          $reponse->closeCursor(); // Termine le traitement de la requête
+        ?>
       </table>
-      <?php
-        } //fin de la boucle, le tableau contient toute la BDD
-        $reponse->closeCursor(); // Termine le traitement de la requête
-      ?>
     </div>
   </body>
   <script src="/www/bootstrap/js/jquery.js"></script>

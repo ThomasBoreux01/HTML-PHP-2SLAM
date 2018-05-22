@@ -58,13 +58,13 @@
             <th>Numéro de client</th>
           </tr>
         </thead>
-        <?php
-          //On affiche les lignes du tableau une à une à l'aide d'une boucle
-          while ($donnees = $requser->fetch())
-          {
-            $numintervention=$donnees['Numero_Intervention'];
-        ?>
         <tbody>
+          <?php
+            //On affiche les lignes du tableau une à une à l'aide d'une boucle
+            while ($donnees = $requser->fetch())
+            {
+              $numintervention=$donnees['Numero_Intervention'];
+          ?>
           <tr class="success">
             <td><?php echo $donnees['Numero_Intervention'];?></td>
             <td><?php echo $donnees['Date_Visite'];?></td>
@@ -72,12 +72,12 @@
             <td><?php echo $donnees['MatriculeT'];?></td>
             <td><?php echo $donnees['Numero_Client'];?></td>
           </tr>
+          <?php
+            } //fin de la boucle, le tableau contient toute la BDD
+            $requser->closeCursor(); // Termine le traitement de la requête
+          ?>
         </tbody>
       </table>
-      <?php
-        } //fin de la boucle, le tableau contient toute la BDD
-        $requser->closeCursor(); // Termine le traitement de la requête
-      ?>
     </div>
     <div class="formulaire">
 			<form method='POST'>

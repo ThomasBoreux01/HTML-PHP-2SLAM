@@ -30,7 +30,7 @@
         </div>
         <ul class="nav navbar-nav">
           <li><a href="assistant.php">Accueil</a></li>
-          <li class="active"><a href="rechercheclient1.php">Recherche d'un client</a></li>
+          <li><a href="rechercheclient1.php">Recherche d'un client</a></li>
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
           <li><a href="affecter.php">Affectation des visites</a></li>
           <li><a href="stats1.php">Statistiques des techniciens</a></li>
@@ -61,12 +61,12 @@
             <th>Numero Agence</th>
           </tr>
         </thead>
-        <?php
-          //On affiche les lignes du tableau une à une à l'aide d'une boucle
-          while ($donnees = $requser->fetch())
-          {
-        ?>
         <tbody>
+          <?php
+            //On affiche les lignes du tableau une à une à l'aide d'une boucle
+            while ($donnees = $requser->fetch())
+            {
+          ?>
           <tr class="success">
             <td><?php echo $donnees['Numero_Client'];?></td>
             <td><?php echo $donnees['Raison_Sociale'];?></td>
@@ -81,12 +81,12 @@
             <td><?php echo $donnees['Numero_de_contrat'];?></td>
             <td><?php echo $donnees['Numero_Agence'];?></td>
           </tr>
+          <?php
+            } //fin de la boucle, le tableau contient toute la BDD
+            $requser->closeCursor(); // Termine le traitement de la requête
+          ?>
         </tbody>
       </table>
-      <?php
-        } //fin de la boucle, le tableau contient toute la BDD
-        $requser->closeCursor(); // Termine le traitement de la requête
-      ?>
     </div>
     <div class="formulaire">
 			<form method='POST'>
