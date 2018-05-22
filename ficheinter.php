@@ -150,6 +150,7 @@
       ?>
     </div>
     <div class="container-fluid">
+      <!--Formulaire de modification d'une intervention-->
       <form method="post">
         <p> Intervention :
           <select name="intervention" size="1">
@@ -180,14 +181,19 @@
       $heure = !empty($_POST['heure']) ? $_POST['heure'] : NULL;
       $matricule = !empty($_POST['matricule']) ? $_POST['matricule'] : NULL;
       $num = !empty($_POST['numClient']) ? $_POST['numClient'] : NULL;
-      $sql = "UPDATE intervention SET Date_Visite=$date, Heure_Visite=$heure, MatriculeT=$matricule, Numero_Client=$num WHERE Numero_Intervention=$intervention";
-      if($bdd->exec($sql) === TRUE) {
-        $message='Modification réussie';
-      	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-      } else {
-        $message='Modification échouée';
-      	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-      }
+      $sql = $bdd->prepare("UPDATE intervention SET Date_Visite= :unedate, Heure_Visite= :heure, MatriculeT= :matricule, Numero_Client= :num WHERE Numero_Intervention= :intervention");
+      $sql->execute(array(
+        'unedate'=>$date,
+        'heure'=>$heure,
+        'matricule'=>$matricule,
+        'num'=>$num,
+        'intervention'=>$intervention
+      ));
+      $message='Modification réussie';
+      echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+    } else {
+      $message='Modification échouée';
+      echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
     }
   ?>
   <script src="/www/bootstrap/js/jquery.js"></script>

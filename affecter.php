@@ -42,6 +42,7 @@
       </div>
     </nav>
 		<div class="container-fluid">
+			<!-- Formulaire pour l'affectation d'un technicien à une intervention -->
 			<form method='POST'>
         Choisir le technicien a affecté :
 				<select id="technicien" name="technicien">
@@ -74,16 +75,20 @@
   <?php
   	if(isset($_POST['affecter'])){
     	$mat = $_POST["technicien"];
-    	$int = $_POST["intervention"];
-			$sql = "UPDATE intervention SET MatriculeT=$mat WHERE Numero_Intervention=$int";
-    	if($bdd->exec($sql) === TRUE) {
-				$message='Affectation réussie';
-	    	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-			} else {
-				$message='Affectation échouée';
-	    	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-			}
-  	}
+    	$inter = $_POST["intervention"];
+			//Requete de mise à jour de la table intervention
+    	$sql = $bdd->prepare("UPDATE intervention SET MatriculeT= :mat WHERE Numero_Intervention= :inter");
+			$sql->execute(array(
+				'mat'=>$mat,
+				'inter'=>$inter
+			));
+			//Message de prevention de l'état de la requete
+			$message='Modification réussie';
+			echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+		} else {
+			$message='Modification échouée';
+			echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+		}
 	?>
   <script src="/www/bootstrap/js/jquery.js"></script>
   <script src="/www/bootstrap/js/bootstrap.min.js"></script>

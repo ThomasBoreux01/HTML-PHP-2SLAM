@@ -40,6 +40,7 @@
       </div>
     </nav>
     <div class="container-fluid">
+      <!--Formulaire de validation des interventions en ajoutant un commentaire et un temps --> 
       <form method="post">
         <p> Intervention :
           <select name="intervention" size="1">
@@ -60,19 +61,21 @@
         <button type="submit" class="btn btn-primary btn-block btn-large" name="visiter">Valider</button>
       </form>
       <?php
-        if(isset($_POST['visiter']))
-        {
+        if(isset($_POST['visiter'])){
           $inter = !empty($_POST['intervention']) ? $_POST['intervention'] : NULL;
           $comment = !empty($_POST['comment']) ? $_POST['comment'] : NULL;
           $time = !empty($_POST['time']) ? $_POST['time'] : NULL;
-          $sql = "UPDATE controler SET Temps_Passe=$time, Commentaire=$comment WHERE Numero_Intervention=$inter";
-          if($bdd->exec($sql) === TRUE){
-            $message='Validation réussie';
-          	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-          } else {
-            $message='Validation échouée';
-          	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-          }
+          $sql = $bdd->prepare("UPDATE controler SET Temps_Passe=:untemps, Commentaire=:comment WHERE Numero_Intervention=:inter");
+          $sql->execute(array(
+            'untemps'=>$time,
+            'comment'=>$comment,
+            'inter'=>$inter
+          ));
+          $message='Modification réussie';
+          echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+        } else {
+          $message='Modification échouée';
+          echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
         }
       ?>
     </div>

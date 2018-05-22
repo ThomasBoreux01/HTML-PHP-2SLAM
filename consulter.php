@@ -56,6 +56,7 @@
       <?php
       	if(isset($_POST['consulter'])){
         	$mat = $_POST["technicien"];
+          //Requete pour la consultation des techniciens sur les interventions
         	$reponse = $bdd->query("SELECT * FROM intervention, client WHERE intervention.MatriculeT=$mat AND intervention.Numero_Client=client.Numero_Client ORDER BY Distance_KM");
       	}
     	?>
@@ -76,6 +77,7 @@
             while ($donnees = $reponse->fetch())
             {
           ?>
+          <!-- On affiche les données de chaque ligne du tableau -->
           <tr class="success">
             <td><?php echo $donnees['Numero_Intervention'];?></td>
             <td><?php echo $donnees['Date_Visite'];?></td>

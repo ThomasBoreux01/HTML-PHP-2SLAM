@@ -41,6 +41,7 @@
       </div>
     </nav>
     <div class="container-fluid">
+      <!--Formulaire de choix de création d'un pdf par rapport à l'intervention choisit -->
       <form action='pdf.php' method="post">
         <p> Intervention :
           <select name="intervention" size="1">

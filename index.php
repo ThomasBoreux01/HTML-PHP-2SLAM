@@ -25,6 +25,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
   <body>
+    <!--Formulaire de connexion-->
     <div class="formulaire">
       <h1>Connexion</h1>
       <form action='connexion.php' method='POST'>

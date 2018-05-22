@@ -123,7 +123,7 @@
       $fax = $_POST["fax"];
       $email = $_POST["email"];
       $duree = $_POST["duree"];
-      $distance = $_POST["distancekm"];
+      $distancekm = $_POST["distancekm"];
       $numcontrat = $_POST["numcontrat"];
       $numagence = $_POST["numagence"];
       $sql = $bdd->prepare("UPDATE client SET Raison_Sociale= :raison, Siren= :siren, Code_Ape= :codeape, Adresse= :adresse, Telephone_Client= :telephone, Fax_Client= :fax, Email= :email, Duree_Deplacement= :duree, Distance_KM= :distance, Numero_de_contrat= :numcontrat, Numero_Agence= :numagence WHERE Numero_Client= :numeroclient");
@@ -139,8 +139,13 @@
         'distance'=>$distance,
         'numcontrat'=>$numcontrat,
         'numagence'=>$numagence,
-        'numeroclient'=>$numeroclient,
+        'numeroclient'=>$numeroclient
       ));
+      $message='Modification réussie';
+      echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+    } else {
+      $message='Modification échouée';
+      echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
     }
   ?>
   <script src="/www/bootstrap/js/jquery.js"></script>
