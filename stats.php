@@ -34,14 +34,14 @@
           <li><a href="rechercheclient.php">Recherche d'un client</a></li>
           <li><a href="rechercheinter.php">Recherche d'une intervention</a></li>
           <li><a href="affecter.php">Affectation des visites</a></li>
-          <li><a href="stats1.php">Statistiques des techniciens</a></li>
+          <li><a href="stats.php">Statistiques des techniciens</a></li>
           <li><a href="creapdf.php">Création d'un PDF</a></li>
           <li><a href="deconnexion.php">Déconnexion</a></li>
         </ul>
       </div>
     </nav>
-    <div class="formulaire">
-			<form action='stats2.php' method='POST'>
+    <div class="container-fluid">
+			<form method='POST'>
 				<p> Matricule :
           <select name="technicien" size="1">
 					  <?php
@@ -74,6 +74,56 @@
         </p>
 				<button type="submit" class="btn btn-primary btn-block btn-large" name="visualiser">Visualiser</button>
 			</form>
+      <?php
+        if(isset($_POST['visualiser'])){
+          $technicien = $_POST['technicien'];
+          $mois = $_POST['mois'];
+          if($technicien&&$mois)
+          {
+            $requser = $bdd->query("SELECT COUNT(intervention.Numero_Intervention) AS Numero_Intervention, SUM(intervention.Heure_Visite) AS Heure_Visite, MONTH(intervention.Date_Visite) AS Mois, YEAR(intervention.Date_Visite) AS Annee FROM intervention WHERE intervention.MatriculeT=$technicien");
+          }
+          else{
+            echo "Erreur";
+          }
+        }
+        else {
+          echo "Erreur";
+        }
+      ?>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Matricule</th>
+            <th>Nombre d'interventions</th>
+            <th>Nombre d'heures</th>
+            <th>Mois</th>
+            <th>Année</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+            //On affiche les lignes du tableau une à une à l'aide d'une boucle
+            while ($donnees = $requser->fetch()){
+              $moisbdd = $donnees['Mois'];
+              if($moisbdd==$mois){
+          ?>
+          <tr class="success">
+            <td><?php echo $technicien;?></td>
+            <td><?php echo $donnees['Numero_Intervention'];?></td>
+            <td><?php echo $donnees['Heure_Visite'];?></td>
+            <td><?php echo $moisbdd;?></td>
+            <td><?php echo $donnees['Annee'];?></td>
+          </tr>
+          <?php
+              }
+              else{
+                echo "Aucune intervention sur ce mois";
+              }
+            } //fin de la boucle, le tableau contient toute la BDD
+              $requser->closeCursor(); // Termine le traitement de la requête
+          ?>
+        </tbody>
+      </table>
 		</div>
   </body>
   <script src="/www/bootstrap/js/jquery.js"></script>

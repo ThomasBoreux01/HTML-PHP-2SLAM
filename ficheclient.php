@@ -33,7 +33,7 @@
           <li><a href="rechercheclient.php">Recherche d'un client</a></li>
           <li><a href="rechercheinter.php">Recherche d'une intervention</a></li>
           <li><a href="affecter.php">Affectation des visites</a></li>
-          <li><a href="stats1.php">Statistiques des techniciens</a></li>
+          <li><a href="stats.php">Statistiques des techniciens</a></li>
           <li><a href="creapdf.php">Création d'un PDF</a></li>
           <li><a href="deconnexion.php">Déconnexion</a></li>
         </ul>
@@ -91,7 +91,7 @@
       </table>
     </div>
     <div class="formulaire">
-			<form action="rechercheclient3.php" method='POST'>
+			<form method='POST'>
         <p> Raison Sociale: <input required="required" type="text" name="raison"></p>
         <p> SIREN: <input required="required" type="text" name="siren"></p>
         <p> Code APE: <input required="required" type="text" name="codeape"></p>
