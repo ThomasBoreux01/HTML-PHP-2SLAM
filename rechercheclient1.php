@@ -33,7 +33,7 @@
           <li><a href="assistant.php">Accueil</a></li>
           <li class="active"><a href="rechercheclient1.php">Recherche d'un client</a></li>
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
-          <li><a href="affecter1.php">Affectation des visites</a></li>
+          <li><a href="affecter.php">Affectation des visites</a></li>
           <li><a href="stats1.php">Statistiques des techniciens</a></li>
           <li><a href="creapdf.php">Création d'un PDF</a></li>
           <li><a href="deconnexion.php">Déconnexion</a></li>

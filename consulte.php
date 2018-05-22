@@ -45,7 +45,7 @@
   					<?php
               $reponse = $bdd->query('SELECT * FROM technicien');
               while ($donnees = $reponse->fetch()){
-                $Matricule = $donnees['Matricule'];
+                $Matricule = $donnees['MatriculeT'];
                 echo "<OPTION VALUE='$Matricule'> $Matricule </OPTION>\n";
               }
               $reponse->closeCursor();
@@ -58,7 +58,7 @@
       <?php
       	if(isset($_POST['consulter'])){
         	$mat = $_POST["technicien"];
-        	$sql = $bdd->query("SELECT * FROM intervention, client WHERE intervention.Matricule=$mat AND intervention.NumClient=client.NumClient ORDER BY DistanceKM");
+        	$sql = $bdd->query("SELECT * FROM intervention, client WHERE intervention.MatriculeT=$mat AND intervention.Numero_Client=client.Numero_Client ORDER BY DistanceKM");
       	}
     	?>
       <table class="table table-bordered">
@@ -79,12 +79,12 @@
         ?>
         <tbody>
           <tr class="success">
-            <td><?php echo $donnees['NumIntervention'];?></td>
-            <td><?php echo $donnees['DateVisite'];?></td>
-            <td><?php echo $donnees['HeureVisite'];?></td>
-            <td><?php echo $donnees['Matricule'];?></td>
-            <td><?php echo $donnees['NumClient'];?></td>
-            <td><?php echo $donnees['DistanceKM'];?></td>
+            <td><?php echo $donnees['Numero_Intervention'];?></td>
+            <td><?php echo $donnees['Date_Visite'];?></td>
+            <td><?php echo $donnees['Heure_Visite'];?></td>
+            <td><?php echo $donnees['MatriculeT'];?></td>
+            <td><?php echo $donnees['Numero_Client'];?></td>
+            <td><?php echo $donnees['Distance_KM'];?></td>
           </tr>
         </tbody>
       </table>

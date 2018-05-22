@@ -54,7 +54,7 @@
           $time = $_POST['time'];
           if($comment&&$time)
           {
-            $requser = $bdd->prepare("UPDATE controler SET TempsPasse=$time, Commentaire=$comment WHERE NumIntervention=$inter");
+            $requser = $bdd->prepare("UPDATE controler SET Temps_Passe=$time, Commentaire=$comment WHERE Numero_Intervention=$inter");
             $requser->execute(array($comment, $time));
             echo "Visite validée";
           }

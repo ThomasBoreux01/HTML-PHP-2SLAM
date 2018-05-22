@@ -42,11 +42,11 @@
       <p> Intervention :
         <select name="intervention" size="1">
           <?php
-            $reponse = $bdd->query('SELECT intervention.NumIntervention  AS NumIntervention FROM intervention, controler WHERE intervention.NumIntervention=controler.NumIntervention');
+            $reponse = $bdd->query('SELECT intervention.Numero_Intervention FROM intervention, controler WHERE intervention.Numero_Intervention=controler.Numero_Intervention');
             while ($donnees = $reponse->fetch())
             {
           ?>
-          <option selected> <?php echo $donnees['NumIntervention']; ?> </option>
+          <option selected> <?php echo $donnees['Numero_Intervention']; ?> </option>
           <?php
             }
             $reponse->closeCursor(); // Termine le traitement de la requête

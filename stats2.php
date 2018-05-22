@@ -35,7 +35,7 @@
           <li><a href="assistant.php">Accueil</a></li>
           <li><a href="rechercheclient1.php">Recherche d'un client</a></li>
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
-          <li><a href="affecter1.php">Affectation des visites</a></li>
+          <li><a href="affecter.php">Affectation des visites</a></li>
           <li><a href="stats1.php">Statistiques des techniciens</a></li>
           <li><a href="deconnexion.php">Déconnexion</a></li>
         </ul>
@@ -48,7 +48,7 @@
           $mois = $_POST['mois'];
           if($technicien&&$mois)
           {
-            $requser = $bdd->query("SELECT COUNT(intervention.NumIntervention) AS NumIntervention, SUM(intervention.HeureVisite) AS HeureVisite, MONTH(intervention.DateVisite) AS Mois, YEAR(intervention.DateVisite) AS Annee FROM intervention WHERE intervention.Matricule=$technicien AND Mois=$mois GROUP BY MONTH(intervention.DateVisite), YEAR(intervention.DateVisite)");
+            $requser = $bdd->query("SELECT COUNT(intervention.Numero_Intervention) AS NumIntervention, SUM(intervention.Heure_Visite) AS HeureVisite, MONTH(intervention.Date_Visite) AS Mois, YEAR(intervention.Date_Visite) AS Annee FROM intervention WHERE intervention.Matricule=$technicien AND Mois=$mois GROUP BY MONTH(intervention.DateVisite), YEAR(intervention.DateVisite)");
           }
           else{
             echo "Erreur";
@@ -76,8 +76,8 @@
         <tbody>
           <tr class="success">
             <td><?php echo $technicien;?></td>
-            <td><?php echo $donnees['NumIntervention'];?></td>
-            <td><?php echo $donnees['HeureVisite'];?></td>
+            <td><?php echo $donnees['Numero_Intervention'];?></td>
+            <td><?php echo $donnees['Heure_Visite'];?></td>
             <td><?php echo $donnees['Mois'];?></td>
             <td><?php echo $donnees['Annee'];?></td>
           </tr>

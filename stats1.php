@@ -33,7 +33,7 @@
           <li><a href="assistant.php">Accueil</a></li>
           <li><a href="rechercheclient1.php">Recherche d'un client</a></li>
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
-          <li><a href="affecter1.php">Affectation des visites</a></li>
+          <li><a href="affecter.php">Affectation des visites</a></li>
           <li><a href="stats1.php">Statistiques des techniciens</a></li>
           <li><a href="deconnexion.php">Déconnexion</a></li>
         </ul>
@@ -44,11 +44,11 @@
 				<p> Matricule :
           <select name="technicien" size="1">
 					  <?php
-						  $reponse = $bdd->query('SELECT technicien.Matricule FROM technicien');
+						  $reponse = $bdd->query('SELECT technicien.MatriculeT FROM technicien');
 						  while ($donnees = $reponse->fetch())
 						  {
 					  ?>
-					  <option selected> <?php echo $donnees['Matricule']; ?> </option>
+					  <option selected> <?php echo $donnees['MatriculeT']; ?> </option>
 					  <?php
 						  }
 						  $reponse->closeCursor(); // Termine le traitement de la requête

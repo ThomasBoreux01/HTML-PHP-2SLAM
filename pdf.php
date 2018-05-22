@@ -22,7 +22,7 @@ $pdf->SetFillColor(96,96,96);
 $pdf->SetTextColor(255,255,255);
 
 $numinter=$_POST['intervention'];
-$reponse = $bdd->query("SELECT * FROM intervention where NumIntervention=$numinter");
+$reponse = $bdd->query("SELECT * FROM intervention where Numero_Intervention=$numinter");
 
 $pdf->SetXY(3,3);
 for($i=0;$i<sizeof($header);$i++)

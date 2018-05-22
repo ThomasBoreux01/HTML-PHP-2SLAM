@@ -34,7 +34,7 @@
           <li><a href="assistant.php">Accueil</a></li>
           <li><a href="rechercheclient1.php">Recherche d'un client</a></li>
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
-          <li class="active"><a href="affecter1.php">Affectation des visites</a></li>
+          <li><a href="affecter.php">Affectation des visites</a></li>
           <li><a href="stats1.php">Statistiques des techniciens</a></li>
 					<li><a href="creapdf.php">Création d'un PDF</a></li>
           <li><a href="deconnexion.php">Déconnexion</a></li>
@@ -46,9 +46,9 @@
         Choisir le technicien a affecté :
 				<select id="technicien" name="technicien">
 					<?php
-            $reponse = $bdd->query('SELECT technicien.Matricule As Matricule FROM technicien, client, intervention WHERE technicien.NumAgence=client.NumAgence AND client.NumClient=intervention.NumClient');
+            $reponse = $bdd->query('SELECT technicien.MatriculeT As MatriculeT FROM technicien, client, intervention WHERE technicien.Numero_Agence=client.Numero_Agence AND client.Numero_Client=intervention.Numero_Client');
             while ($donnees = $reponse->fetch()){
-              $Matricule = $donnees['Matricule'];
+              $Matricule = $donnees['MatriculeT'];
               echo "<OPTION VALUE='$Matricule'> $Matricule </OPTION>\n";
             }
             $reponse->closeCursor();
@@ -60,7 +60,7 @@
           <?php
             $reponse = $bdd->query('SELECT * FROM intervention');
             while ($donnees = $reponse->fetch()){
-              $valeur = $donnees['NumIntervention'];
+              $valeur = $donnees['Numero_Intervention'];
               echo "<OPTION VALUE='$valeur'> $valeur </OPTION>\n";
             }
             $reponse->closeCursor();
@@ -75,7 +75,7 @@
   	if(isset($_POST['affecter'])){
     	$mat = $_POST["technicien"];
     	$int = $_POST["intervention"];
-    	$sql = $bdd->query("UPDATE intervention SET Matricule=$mat WHERE NumIntervention=$int");
+    	$sql = $bdd->query("UPDATE intervention SET MatriculeT=$mat WHERE Numero_Intervention=$int");
     	$message='Affectation réussi';
     	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
 			$sql->closeCursor();

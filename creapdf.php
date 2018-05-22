@@ -33,7 +33,7 @@
           <li><a href="assistant.php">Accueil</a></li>
           <li class="active"><a href="rechercheclient1.php">Recherche d'un client</a></li>
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
-          <li><a href="affecter1.php">Affectation des visites</a></li>
+          <li><a href="affecter.php">Affectation des visites</a></li>
           <li><a href="stats1.php">Statistiques des techniciens</a></li>
           <li><a href="creapdf.php">Création d'un PDF</a></li>
           <li><a href="deconnexion.php">Déconnexion</a></li>
@@ -45,11 +45,11 @@
         <p> Intervention :
           <select name="intervention" size="1">
 					  <?php
-						  $reponse = $bdd->query('SELECT intervention.NumIntervention  AS NumIntervention FROM intervention WHERE intervention.Matricule IS NOT NULL');
+						  $reponse = $bdd->query('SELECT intervention.Numero_Intervention FROM intervention WHERE intervention.MatriculeT IS NOT NULL');
 						  while ($donnees = $reponse->fetch())
 						  {
 					  ?>
-					  <option selected> <?php echo $donnees['NumIntervention']; ?> </option>
+					  <option selected> <?php echo $donnees['Numero_Intervention']; ?> </option>
 					  <?php
 						  }
 						  $reponse->closeCursor(); // Termine le traitement de la requête

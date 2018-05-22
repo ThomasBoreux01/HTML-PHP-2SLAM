@@ -32,8 +32,8 @@
         <ul class="nav navbar-nav">
           <li><a href="assistant.php">Accueil</a></li>
           <li><a href="rechercheclient1.php">Recherche d'un client</a></li>
-          <li class="active"><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
-          <li><a href="affecter1.php">Affectation des visites</a></li>
+          <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
+          <li><a href="affecter.php">Affectation des visites</a></li>
           <li><a href="stats1.php">Statistiques des techniciens</a></li>
           <li><a href="creapdf.php">Création d'un PDF</a></li>
           <li><a href="deconnexion.php">Déconnexion</a></li>
@@ -45,7 +45,7 @@
         $datevisite=$_POST['dateinter'];
         if ($datevisite)
         {
-          $requser = $bdd->query("SELECT * FROM intervention WHERE DateVisite=$datevisite");
+          $requser = $bdd->query("SELECT * FROM intervention WHERE Date_Visite=$datevisite");
         }
       ?>
       <table class="table table-bordered">
@@ -62,15 +62,15 @@
           //On affiche les lignes du tableau une à une à l'aide d'une boucle
           while ($donnees = $requser->fetch())
           {
-            $numclient=$donnees['NumClient'];
+            $numclient=$donnees['Numero_Client'];
         ?>
         <tbody>
           <tr class="success">
-            <td><?php echo $donnees['NumIntervention'];?></td>
-            <td><?php echo $donnees['DateVisite'];?></td>
-            <td><?php echo $donnees['HeureVisite'];?></td>
-            <td><?php echo $donnees['Matricule'];?></td>
-            <td><?php echo $donnees['NumClient'];?></td>
+            <td><?php echo $donnees['Numero_Intervention'];?></td>
+            <td><?php echo $donnees['Date_Visite'];?></td>
+            <td><?php echo $donnees['Heure_Visite'];?></td>
+            <td><?php echo $donnees['MatriculeT'];?></td>
+            <td><?php echo $donnees['Numero_Client'];?></td>
           </tr>
         </tbody>
       </table>
@@ -96,7 +96,7 @@
       $heure = $_POST["heure"];
       $matricule = $_POST["matricule"];
       $num = $_POST["numClient"];
-      $sql = $bdd->query("UPDATE intervention SET DateVisite=$date, HeureVisite=$heure, Matricule=$matricule, NumClient=$num WHERE NumIntervention=$numclient");
+      $sql = $bdd->query("UPDATE intervention SET Date_Visite=$date, Heure_Visite=$heure, MatriculeT=$matricule, Numero_Client=$num WHERE Numero_Intervention=$numclient");
       $message='Modification réussi';
       echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
       $sql->closeCursor(); // Termine le traitement de la requête

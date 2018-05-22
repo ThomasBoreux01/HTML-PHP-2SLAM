@@ -7,16 +7,16 @@
     $mdp = htmlspecialchars(trim($_POST['mdp']));
     if($login&&$mdp)
     {
-      $requser = $bdd->prepare("SELECT * FROM connexion WHERE login = ? AND mdp = ? ");
+      $requser = $bdd->prepare("SELECT * FROM user WHERE nom = ? AND password = ? ");
       $requser -> execute(array($login, $mdp));
       $userexist = $requser -> rowCount();
       $userinfo = $requser -> fetch();
-      if($login == 'assistant' AND $userexist ==1)
+      if($login == 'assistant' AND $userexist == 1)
       {
         $_SESSION['login']=$userinfo['login'];
         header("Location: assistant.php");
       }
-      elseif($login == 'agent' AND $userexist ==1)
+      elseif($login == 'tec' AND $userexist ==1)
       {
         $_SESSION['login']=$userinfo['login'];
         header("Location: agent.php");

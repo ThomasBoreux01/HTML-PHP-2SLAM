@@ -32,7 +32,7 @@
           <li><a href="assistant.php">Accueil</a></li>
           <li class="active"><a href="rechercheclient1.php">Recherche d'un client</a></li>
           <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
-          <li><a href="affecter1.php">Affectation des visites</a></li>
+          <li><a href="affecter.php">Affectation des visites</a></li>
           <li><a href="stats1.php">Statistiques des techniciens</a></li>
           <li><a href="creapdf.php">Création d'un PDF</a></li>
           <li><a href="deconnexion.php">Déconnexion</a></li>
@@ -42,7 +42,7 @@
     <div class="container-fluid">
       <?php
         $numclient=$_POST['numclient'];
-        $requser = $bdd->query("SELECT * FROM client where NumClient=$numclient");
+        $requser = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
       ?>
       <table class="table table-bordered">
         <thead>
@@ -57,6 +57,8 @@
             <th>Email</th>
             <th>DureeDeplacement</th>
             <th>DistanceKM</th>
+            <th>Numero de contrat</th>
+            <th>Numero Agence</th>
           </tr>
         </thead>
         <?php
@@ -66,16 +68,18 @@
         ?>
         <tbody>
           <tr class="success">
-            <td><?php echo $donnees['NumClient'];?></td>
-            <td><?php echo $donnees['RaisonSociale'];?></td>
-            <td><?php echo $donnees['SIREN'];?></td>
-            <td><?php echo $donnees['CodeAPE'];?></td>
+            <td><?php echo $donnees['Numero_Client'];?></td>
+            <td><?php echo $donnees['Raison_Sociale'];?></td>
+            <td><?php echo $donnees['Siren'];?></td>
+            <td><?php echo $donnees['Code_Ape'];?></td>
             <td><?php echo $donnees['Adresse'];?></td>
-            <td><?php echo $donnees['TelephoneClient'];?></td>
-            <td><?php echo $donnees['FaxClient'];?></td>
+            <td><?php echo $donnees['Telephone_Client'];?></td>
+            <td><?php echo $donnees['Fax_Client'];?></td>
             <td><?php echo $donnees['Email'];?></td>
-            <td><?php echo $donnees['DureeDeplacement'];?></td>
-            <td><?php echo $donnees['DistanceKM'];?></td>
+            <td><?php echo $donnees['Duree_Deplacement'];?></td>
+            <td><?php echo $donnees['Distance_KM'];?></td>
+            <td><?php echo $donnees['Numero_de_contrat'];?></td>
+            <td><?php echo $donnees['Numero_Agence'];?></td>
           </tr>
         </tbody>
       </table>
@@ -116,8 +120,7 @@
       $distancekm = $_POST["distancekm"];
       $numcontrat = $_POST["numcontrat"];
       $numagence = $_POST["numagence"];
-      $coderegion = $_POST["coderegion"];
-    	$sql = $bdd->query("UPDATE client SET RaisonSociale=$raison, SIREN=$siren, CodeAPE=$codeape, Adresse=$adresse, TelephoneClient=$telephone, FaxClient=$fax, Email=$email, DureeDeplacement=$duree, DistanceKM=$distancekm, NumContrat=$numcontrat, NumAgence=$numagence, CodeRegion=$coderegion WHERE NumClient=$numclient");
+    	$sql = $bdd->query("UPDATE client SET Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, NumContrat=$numcontrat, NumAgence=$numagence WHERE NumClient=$numclient");
     	$message='Modification réussi';
     	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
       $sql->closeCursor(); // Termine le traitement de la requête
