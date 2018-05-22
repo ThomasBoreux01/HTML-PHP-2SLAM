@@ -93,18 +93,6 @@
     <div class="formulaire">
 			<form action="rechercheclient3.php" method='POST'>
         <input name="numclient" type="hidden" value=<?php $numclient;?>
-        <p> Raison Sociale: <input required="required" type="text" name="raison"></p>
-        <p> SIREN: <input required="required" type="text" name="siren"></p>
-        <p> Code APE: <input required="required" type="text" name="codeape"></p>
-        <p> Adresse: <input required="required" type="text" name="adresse"></p>
-        <p> Telephone: <input required="required" type="text" name="telephone"></p>
-        <p> FAX: <input required="required" type="text" name="fax"></p>
-        <p> Email: <input required="required" type="text" name="email"></p>
-        <p> Duree Deplacement: <input required="required" type="text" name="duree"></p>
-        <p> Distance KM: <input required="required" type="text" name="distancekm"></p>
-        <p> Numero contrat: <input required="required" type="text" name="numcontrat"></p>
-        <p> Numero agence: <input required="required" type="text" name="numagence"></p>
-        </br>
 				<button type="submit" class="btn btn-primary btn-block btn-large" name="modifier">Modifier</button>
 			</form>
 		</div>
