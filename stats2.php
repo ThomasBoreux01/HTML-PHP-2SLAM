@@ -58,7 +58,6 @@
         else {
           echo "Erreur";
         }
-        if()
       ?>
       <table class="table table-bordered">
         <thead>
