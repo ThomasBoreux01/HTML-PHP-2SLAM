@@ -174,12 +174,12 @@
     </div>
   </body>
   <?php
-    if(isset($_POST['valider'])){
-      $intervention = $_POST["intervention"];
-      $date = $_POST["date"];
-      $heure = $_POST["heure"];
-      $matricule = $_POST["matricule"];
-      $num = $_POST["numClient"];
+    if(isset($_POST['modifier'])){
+      $intervention = !empty($_POST['intervention']) ? $_POST['intervention'] : NULL;
+      $date = !empty($_POST['date']) ? $_POST['date'] : NULL;
+      $heure = !empty($_POST['heure']) ? $_POST['heure'] : NULL;
+      $matricule = !empty($_POST['matricule']) ? $_POST['matricule'] : NULL;
+      $num = !empty($_POST['numClient']) ? $_POST['numClient'] : NULL;
       $sql = "UPDATE intervention SET Date_Visite=$date, Heure_Visite=$heure, MatriculeT=$matricule, Numero_Client=$num WHERE Numero_Intervention=$intervention";
       if($bdd->query($sql) === TRUE) {
         $message='Modification réussie';
@@ -188,7 +188,7 @@
         $message='Modification échouée'.$bdd->error;
       	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
       }
-      $bdd->close();
+      $bdd->closeCursor();
     }
   ?>
   <script src="/www/bootstrap/js/jquery.js"></script>

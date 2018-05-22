@@ -133,7 +133,7 @@
         $message='Modification échouée'.$bdd->error;
         echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
       }
-      $bdd->close();
+      $bdd->closeCursor();
     }
   ?>
   <script src="/www/bootstrap/js/jquery.js"></script>
