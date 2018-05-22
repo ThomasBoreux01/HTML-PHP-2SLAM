@@ -58,6 +58,7 @@
         else {
           echo "Erreur";
         }
+        if()
       ?>
       <table class="table table-bordered">
         <thead>
@@ -72,18 +73,23 @@
         <tbody>
           <?php
             //On affiche les lignes du tableau une à une à l'aide d'une boucle
-            while ($donnees = $requser->fetch())
-            {
+            while ($donnees = $requser->fetch()){
+              $moisbdd = $donnees['Mois'];
+              if($moisbdd==$mois){
           ?>
           <tr class="success">
             <td><?php echo $technicien;?></td>
             <td><?php echo $donnees['Numero_Intervention'];?></td>
             <td><?php echo $donnees['Heure_Visite'];?></td>
-            <td><?php echo $donnees['Mois'];?></td>
+            <td><?php echo $moisbdd;?></td>
             <td><?php echo $donnees['Annee'];?></td>
           </tr>
           <?php
-              } //fin de la boucle, le tableau contient toute la BDD
+              }
+              else{
+                echo "Aucune intervention sur ce mois";
+              }
+            } //fin de la boucle, le tableau contient toute la BDD
               $requser->closeCursor(); // Termine le traitement de la requête
           ?>
         </tbody>
