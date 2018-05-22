@@ -57,7 +57,6 @@
           $requser = $bdd->query("UPDATE client SET Numero_Client=$numclient, Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, Numero_de_contrat=$numcontrat, Numero_Agence=$numagence WHERE Numero_Client=$numclient");
           $message='Modification réussi';
           echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-          $requser->closeCursor();
         }
         $sql = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
       ?>
