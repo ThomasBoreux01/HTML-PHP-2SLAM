@@ -41,7 +41,7 @@
         </ul>
       </div>
     </nav>
-		<div class="formulaire">
+		<div class="container-fluid">
 			<form method='POST'>
         Choisir le technicien a affecté :
 				<select id="technicien" name="technicien">

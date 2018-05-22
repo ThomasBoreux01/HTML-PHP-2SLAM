@@ -43,7 +43,7 @@
     <div class="container-fluid">
       <form action='ficheclient.php' method="post">
         <p> Numero client: <input required="required" type="text" name="numclient"></p>
-        <button type="submit" class="btn btn-primary btn-block btn-large" name="rechercher">Rechercher client</button>
+        <button type="submit" class="btn btn-primary btn-block btn-large" name="rechercher">Rechercher</button>
       </form>
     </div>
   </body>
