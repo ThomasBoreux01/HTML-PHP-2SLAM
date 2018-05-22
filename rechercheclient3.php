@@ -58,7 +58,8 @@
           $message='Modification réussi';
           echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
           $sql->closeCursor(); // Termine le traitement de la requête
-          $sql = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
+        }
+        $sql = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
       ?>
       <table class="table table-bordered">
         <thead>
