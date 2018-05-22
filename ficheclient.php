@@ -95,7 +95,7 @@
     </div>
     <div class="container-fluid">
 			<form method='POST'>
-        <?php echo "<input required=\"required\" type=\"hidden\" name=\"numeroclient\" value=\""$numclient"\">"; ?>
+        <?php echo "<input required=\"required\" type=\"hidden\" name=\"numeroclient\" value=\"".$numclient."\">"; ?>
         <p> Raison Sociale: <input required="required" type="text" name="raison"></p>
         <p> SIREN: <input required="required" type="text" name="siren"></p>
         <p> Code APE: <input required="required" type="text" name="codeape"></p>
