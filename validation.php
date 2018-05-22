@@ -74,7 +74,6 @@
           	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
           }
         }
-        $bdd->closeCursor(); // Termine le traitement de la requête
       ?>
     </div>
   </body>
