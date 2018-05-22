@@ -57,6 +57,7 @@
           $requser = $bdd->query("UPDATE client SET Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, NumContrat=$numcontrat, NumAgence=$numagence WHERE NumClient=$numclient");
           $message='Modification réussi';
           echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+          $requser->closeCursor();
         }
         $sql = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
       ?>
@@ -80,7 +81,7 @@
         <tbody>
           <?php
             //On affiche les lignes du tableau une à une à l'aide d'une boucle
-            while ($donnees = $requser->fetch())
+            while ($donnees = $sql->fetch())
             {
           ?>
           <tr class="success">
