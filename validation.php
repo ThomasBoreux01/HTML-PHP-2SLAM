@@ -66,11 +66,11 @@
           $comment = !empty($_POST['comment']) ? $_POST['comment'] : NULL;
           $time = !empty($_POST['time']) ? $_POST['time'] : NULL;
           $sql = "UPDATE controler SET Temps_Passe=$time, Commentaire=$comment WHERE Numero_Intervention=$inter";
-          if($bdd->query($sql) === TRUE){
+          if($bdd->exec($sql) === TRUE){
             $message='Validation réussie';
           	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
           } else {
-            $message='Validation échouée'.$bdd->error;
+            $message='Validation échouée';
           	echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
           }
         }

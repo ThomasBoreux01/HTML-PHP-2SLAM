@@ -126,11 +126,11 @@
       $numcontrat = $_POST["numcontrat"];
       $numagence = $_POST["numagence"];
       $sql = "UPDATE client SET Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, Numero_de_contrat=$numcontrat, Numero_Agence=$numagence WHERE Numero_Client=$numclient";
-      if($bdd->query($sql) === TRUE) {
+      if($bdd->exec($sql) === TRUE) {
         $message='Modification réussie';
         echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
       } else {
-        $message='Modification échouée'.$bdd->error;
+        $message='Modification échouée';
         echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
       }
       $bdd->closeCursor();
