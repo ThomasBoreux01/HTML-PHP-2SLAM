@@ -121,11 +121,24 @@
       $fax = $_POST["fax"];
       $email = $_POST["email"];
       $duree = $_POST["duree"];
-      $distancekm = $_POST["distancekm"];
+      $distance = $_POST["distancekm"];
       $numcontrat = $_POST["numcontrat"];
       $numagence = $_POST["numagence"];
-      $sql = $bdd->prepare("UPDATE client SET Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, Numero_de_contrat=$numcontrat, Numero_Agence=$numagence WHERE Numero_Client=$numclient");
-      $sql->execute();
+      $sql = $bdd->prepare("UPDATE client SET Raison_Sociale= :raison, Siren= :siren, Code_Ape= :codeape, Adresse= :adresse, Telephone_Client= :telephone, Fax_Client= :fax, Email= :email, Duree_Deplacement= :duree, Distance_KM= :distance, Numero_de_contrat= :numcontrat, Numero_Agence= :numagence WHERE Numero_Client= :numclient");
+      $sql->execute(array(
+        'raison'=>$raison,
+        'siren'=>$siren,
+        'codeape'=>$codeape,
+        'adresse'=>$adresse,
+        'telephone'=>$telephone,
+        'fax'=>$fax,
+        'email'=>$email,
+        'duree'=>$duree,
+        'distance'=>$distance,
+        'numcontrat'=>$numcontrat,
+        'numagence'=>$numagence,
+        'numclient'=>$numclient,
+      ));
     }
   ?>
   <script src="/www/bootstrap/js/jquery.js"></script>
