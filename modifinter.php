@@ -87,12 +87,12 @@
         <p> Matricule: <input required="required" type="text" name="matricule"></p>
         <p> Numéro du client: <input required="required" type="text" name="numClient"></p>
         </br>
-				<button type="submit" class="btn btn-primary btn-block btn-large" name="modifier">Modifier</button>
+				<button type="submit" class="btn btn-primary btn-block btn-large" name="valider">Valider</button>
 			</form>
 		</div>
   </body>
   <?php
-    if(isset($_POST['modifier'])){
+    if(isset($_POST['valider'])){
       $date = $_POST["date"];
       $heure = $_POST["heure"];
       $matricule = $_POST["matricule"];

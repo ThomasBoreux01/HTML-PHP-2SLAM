@@ -9,26 +9,6 @@
   	die('Erreur : ' . $e->getMessage());
   }
 ?>
-<?php
-  if(isset($_POST['modifier'])){
-    $numclient = $_POST["numclient"];
-    $raison = $_POST["raison"];
-    $siren = $_POST["siren"];
-    $codeape = $_POST["codeape"];
-    $adresse = $_POST["adresse"];
-    $telephone = $_POST["telephone"];
-    $fax = $_POST["fax"];
-    $email = $_POST["email"];
-    $duree = $_POST["duree"];
-    $distancekm = $_POST["distancekm"];
-    $numcontrat = $_POST["numcontrat"];
-    $numagence = $_POST["numagence"];
-    $requser = $bdd->query("UPDATE client SET Numero_Client=$numclient, Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, Numero_de_contrat=$numcontrat, Numero_Agence=$numagence WHERE Numero_Client=$numclient");
-    $message='Modification réussi';
-    echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-    $requser->closeCursor();
-  }
-?>
 <html>
   <head>
     <!-- En-tête de la page -->
@@ -61,7 +41,12 @@
     </nav>
     <div class="container-fluid">
       <?php
-        $sql = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
+        if(isset($_POST['valider'])){
+          $numclient=$_POST['numclient'];
+          if($numclient){
+            $sql = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
+          }
+        }
       ?>
       <table class="table table-bordered">
         <thead>
@@ -107,7 +92,43 @@
         </tbody>
       </table>
     </div>
+    <div class="formulaire">
+			<form action="rechercheclient3.php" method='POST'>
+        <p> Raison Sociale: <input required="required" type="text" name="raison"></p>
+        <p> SIREN: <input required="required" type="text" name="siren"></p>
+        <p> Code APE: <input required="required" type="text" name="codeape"></p>
+        <p> Adresse: <input required="required" type="text" name="adresse"></p>
+        <p> Telephone: <input required="required" type="text" name="telephone"></p>
+        <p> FAX: <input required="required" type="text" name="fax"></p>
+        <p> Email: <input required="required" type="text" name="email"></p>
+        <p> Duree Deplacement: <input required="required" type="text" name="duree"></p>
+        <p> Distance KM: <input required="required" type="text" name="distancekm"></p>
+        <p> Numero contrat: <input required="required" type="text" name="numcontrat"></p>
+        <p> Numero agence: <input required="required" type="text" name="numagence"></p>
+        </br>
+				<button type="submit" class="btn btn-primary btn-block btn-large" name="valider">Valider</button>
+			</form>
+		</div>
   </body>
+  <?php
+    if(isset($_POST['valider'])){
+      $raison = $_POST["raison"];
+      $siren = $_POST["siren"];
+      $codeape = $_POST["codeape"];
+      $adresse = $_POST["adresse"];
+      $telephone = $_POST["telephone"];
+      $fax = $_POST["fax"];
+      $email = $_POST["email"];
+      $duree = $_POST["duree"];
+      $distancekm = $_POST["distancekm"];
+      $numcontrat = $_POST["numcontrat"];
+      $numagence = $_POST["numagence"];
+      $requser = $bdd->query("UPDATE client SET Numero_Client=$numclient, Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, Numero_de_contrat=$numcontrat, Numero_Agence=$numagence WHERE Numero_Client=$numclient");
+      $message='Modification réussi';
+      echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+      $requser->closeCursor();
+    }
+  ?>
   <script src="/www/bootstrap/js/jquery.js"></script>
   <script src="/www/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
