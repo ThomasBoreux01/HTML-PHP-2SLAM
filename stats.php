@@ -76,19 +76,11 @@
 			</form>
       <?php
         if(isset($_POST['visualiser'])){
-          $technicien = $_POST['technicien'];
-          $mois = $_POST['mois'];
-          if($technicien&&$mois)
-          {
-            $requser = $bdd->query("SELECT COUNT(intervention.Numero_Intervention) AS Numero_Intervention, SUM(intervention.Heure_Visite) AS Heure_Visite, MONTH(intervention.Date_Visite) AS Mois, YEAR(intervention.Date_Visite) AS Annee FROM intervention WHERE intervention.MatriculeT=$technicien");
-          }
-          else{
-            echo "Erreur";
-          }
-        }
-        else {
-          echo "Erreur";
-        }
+          $technicien = !empty($_POST['technicien']) ? $_POST['technicien'] : NULL;
+          $mois = !empty($_POST['mois']) ? $_POST['mois'] : NULL;
+          if($technicien&&$mois){
+            $sql = "SELECT COUNT(intervention.Numero_Intervention) AS Numero_Intervention, SUM(intervention.Heure_Visite) AS Heure_Visite, MONTH(intervention.Date_Visite) AS Mois, YEAR(intervention.Date_Visite) AS Annee FROM intervention WHERE intervention.MatriculeT=$technicien";
+            $bdd->query($sql);
       ?>
       <table class="table table-bordered">
         <thead>
@@ -124,6 +116,9 @@
           ?>
         </tbody>
       </table>
+      <?php
+        }
+      ?>
 		</div>
   </body>
   <script src="/www/bootstrap/js/jquery.js"></script>
