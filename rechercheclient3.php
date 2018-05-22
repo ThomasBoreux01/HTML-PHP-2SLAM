@@ -54,10 +54,10 @@
           $distancekm = $_POST["distancekm"];
           $numcontrat = $_POST["numcontrat"];
           $numagence = $_POST["numagence"];
-          $sql = $bdd->query("UPDATE client SET Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, NumContrat=$numcontrat, NumAgence=$numagence WHERE NumClient=$numclient");
+          $requser = $bdd->query("UPDATE client SET Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, NumContrat=$numcontrat, NumAgence=$numagence WHERE NumClient=$numclient");
           $message='Modification réussi';
           echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-          $sql->closeCursor(); // Termine le traitement de la requête
+          $requser->closeCursor(); // Termine le traitement de la requête
         }
         $sql = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
       ?>
