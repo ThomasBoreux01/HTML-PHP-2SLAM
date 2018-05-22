@@ -58,7 +58,7 @@
       <?php
       	if(isset($_POST['consulter'])){
         	$mat = $_POST["technicien"];
-        	$sql = $bdd->query("SELECT * FROM intervention, client WHERE intervention.MatriculeT=$mat AND intervention.Numero_Client=client.Numero_Client ORDER BY DistanceKM");
+        	$reponse = $bdd->query("SELECT * FROM intervention, client WHERE intervention.MatriculeT=$mat AND intervention.Numero_Client=client.Numero_Client ORDER BY Distance_KM");
       	}
     	?>
       <table class="table table-bordered">
@@ -74,7 +74,7 @@
         </thead>
         <?php
           //On affiche les lignes du tableau une à une à l'aide d'une boucle
-          while ($donnees = $sql->fetch())
+          while ($donnees = $reponse->fetch())
           {
         ?>
         <tbody>
@@ -90,7 +90,7 @@
       </table>
       <?php
         } //fin de la boucle, le tableau contient toute la BDD
-        $sql->closeCursor(); // Termine le traitement de la requête
+        $reponse->closeCursor(); // Termine le traitement de la requête
       ?>
     </div>
   </body>

@@ -59,7 +59,6 @@
           </tr>
         </thead>
         <?php
-          $numintervention=$donnees['Numero_Intervention'];
           //On affiche les lignes du tableau une à une à l'aide d'une boucle
           while ($donnees = $requser->fetch())
           {
