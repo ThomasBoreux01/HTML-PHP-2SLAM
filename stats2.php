@@ -48,7 +48,7 @@
           $mois = $_POST['mois'];
           if($technicien&&$mois)
           {
-            $requser = $bdd->query("SELECT COUNT(intervention.Numero_Intervention) AS Numero_Intervention, SUM(intervention.Heure_Visite) AS Heure_Visite, MONTH(intervention.Date_Visite) AS Mois, YEAR(intervention.Date_Visite) AS Annee FROM intervention WHERE intervention.MatriculeT=$technicien AND Mois=$mois GROUP BY MONTH(intervention.Date_Visite), YEAR(intervention.Date_Visite)");
+            $requser = $bdd->query("SELECT COUNT(intervention.Numero_Intervention) AS Numero_Intervention, SUM(intervention.Heure_Visite) AS Heure_Visite, MONTH(intervention.Date_Visite) AS Mois, YEAR(intervention.Date_Visite) AS Annee FROM intervention WHERE intervention.MatriculeT=$technicien AND Mois=$mois");
           }
           else{
             echo "Erreur";
@@ -68,12 +68,12 @@
             <th>Année</th>
           </tr>
         </thead>
-        <?php
-          //On affiche les lignes du tableau une à une à l'aide d'une boucle
-          while ($donnees = $requser->fetch())
-          {
-        ?>
         <tbody>
+          <?php
+            //On affiche les lignes du tableau une à une à l'aide d'une boucle
+            while ($donnees = $requser->fetch())
+            {
+          ?>
           <tr class="success">
             <td><?php echo $technicien;?></td>
             <td><?php echo $donnees['Numero_Intervention'];?></td>
@@ -81,12 +81,12 @@
             <td><?php echo $donnees['Mois'];?></td>
             <td><?php echo $donnees['Annee'];?></td>
           </tr>
+          <?php
+              } //fin de la boucle, le tableau contient toute la BDD
+              $requser->closeCursor(); // Termine le traitement de la requête
+          ?>
         </tbody>
       </table>
-      <?php
-          } //fin de la boucle, le tableau contient toute la BDD
-          $requser->closeCursor(); // Termine le traitement de la requête
-      ?>
     </div>
   </body>
   <script src="/www/bootstrap/js/jquery.js"></script>
