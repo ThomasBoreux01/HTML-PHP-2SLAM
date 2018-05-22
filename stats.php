@@ -79,8 +79,7 @@
           $technicien = !empty($_POST['technicien']) ? $_POST['technicien'] : NULL;
           $mois = !empty($_POST['mois']) ? $_POST['mois'] : NULL;
           if($technicien&&$mois){
-            $sql = "SELECT COUNT(intervention.Numero_Intervention) AS Numero_Intervention, SUM(intervention.Heure_Visite) AS Heure_Visite, MONTH(intervention.Date_Visite) AS Mois, YEAR(intervention.Date_Visite) AS Annee FROM intervention WHERE intervention.MatriculeT=$technicien";
-            $bdd->query($sql);
+            $requser = $bdd->query("SELECT COUNT(intervention.Numero_Intervention) AS Numero_Intervention, SUM(intervention.Heure_Visite) AS Heure_Visite, MONTH(intervention.Date_Visite) AS Mois, YEAR(intervention.Date_Visite) AS Annee FROM intervention WHERE intervention.MatriculeT=$technicien");
       ?>
       <table class="table table-bordered">
         <thead>

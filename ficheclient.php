@@ -124,8 +124,8 @@
       $distancekm = $_POST["distancekm"];
       $numcontrat = $_POST["numcontrat"];
       $numagence = $_POST["numagence"];
-      $sql = "UPDATE client SET Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, Numero_de_contrat=$numcontrat, Numero_Agence=$numagence WHERE Numero_Client=$numclient";
-      $bdd->query($sql);
+      $sql = $bdd->prepare("UPDATE client SET Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, Numero_de_contrat=$numcontrat, Numero_Agence=$numagence WHERE Numero_Client=$numclient");
+      $sql->execute();
     }
   ?>
   <script src="/www/bootstrap/js/jquery.js"></script>
