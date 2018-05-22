@@ -53,7 +53,7 @@
           ?>
         </select>
       </p>
-      <button type="submit" class="btn btn-primary btn-block btn-large" name="Valider">Valider</button>
+      <button type="submit" class="btn btn-primary btn-block btn-large" name="valider">Valider</button>
     </form>
   </body>
   <script src="/www/bootstrap/js/jquery.js"></script>

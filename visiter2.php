@@ -40,7 +40,9 @@
     </nav>
     <div class="container-fluid">
       <?php
+      if(isset($_POST['valider'])){
         $inter = $_POST['intervention'];
+      }
       ?>
       <form method="post">
         <p> Commentaire: <input type="text" name="comment"></p>
