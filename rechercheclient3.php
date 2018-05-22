@@ -41,10 +41,24 @@
     </nav>
     <div class="container-fluid">
       <?php
-        if(isset($_POST['rechercher'])){
-          $numclient = $_POST['numclient'];
-        }
-        $requser = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
+        if(isset($_POST['modifier'])){
+          $numclient = $_POST["numclient"];
+          $raison = $_POST["raison"];
+          $siren = $_POST["siren"];
+          $codeape = $_POST["codeape"];
+          $adresse = $_POST["adresse"];
+          $telephone = $_POST["telephone"];
+          $fax = $_POST["fax"];
+          $email = $_POST["email"];
+          $duree = $_POST["duree"];
+          $distancekm = $_POST["distancekm"];
+          $numcontrat = $_POST["numcontrat"];
+          $numagence = $_POST["numagence"];
+          $sql = $bdd->query("UPDATE client SET Raison_Sociale=$raison, Siren=$siren, Code_Ape=$codeape, Adresse=$adresse, Telephone_Client=$telephone, Fax_Client=$fax, Email=$email, Duree_Deplacement=$duree, Distance_KM=$distancekm, NumContrat=$numcontrat, NumAgence=$numagence WHERE NumClient=$numclient");
+          $message='Modification réussi';
+          echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+          $sql->closeCursor(); // Termine le traitement de la requête
+          $sql = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
       ?>
       <table class="table table-bordered">
         <thead>
@@ -90,24 +104,6 @@
         </tbody>
       </table>
     </div>
-    <div class="formulaire">
-			<form action="rechercheclient3.php" method='POST'>
-        <input name="numclient" type="hidden" value=<?php $numclient;?>
-        <p> Raison Sociale: <input required="required" type="text" name="raison"></p>
-        <p> SIREN: <input required="required" type="text" name="siren"></p>
-        <p> Code APE: <input required="required" type="text" name="codeape"></p>
-        <p> Adresse: <input required="required" type="text" name="adresse"></p>
-        <p> Telephone: <input required="required" type="text" name="telephone"></p>
-        <p> FAX: <input required="required" type="text" name="fax"></p>
-        <p> Email: <input required="required" type="text" name="email"></p>
-        <p> Duree Deplacement: <input required="required" type="text" name="duree"></p>
-        <p> Distance KM: <input required="required" type="text" name="distancekm"></p>
-        <p> Numero contrat: <input required="required" type="text" name="numcontrat"></p>
-        <p> Numero agence: <input required="required" type="text" name="numagence"></p>
-        </br>
-				<button type="submit" class="btn btn-primary btn-block btn-large" name="modifier">Modifier</button>
-			</form>
-		</div>
   </body>
   <script src="/www/bootstrap/js/jquery.js"></script>
   <script src="/www/bootstrap/js/bootstrap.min.js"></script>
