@@ -85,9 +85,6 @@
 			//Message de prevention de l'état de la requete
 			$message='Modification réussie';
 			echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-		} else {
-			$message='Modification échouée';
-			echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
 		}
 	?>
   <script src="/www/bootstrap/js/jquery.js"></script>

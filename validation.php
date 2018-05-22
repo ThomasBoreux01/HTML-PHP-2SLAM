@@ -33,14 +33,14 @@
         </div>
         <ul class="nav navbar-nav">
           <li><a href="agent.php">Accueil</a></li>
-          <li class="active"><a href="validation.php">Validation d'une intervention</a></li>
+          <li><a href="validation.php">Validation d'une intervention</a></li>
           <li><a href="consulter.php">Consultation</a></li>
           <li><a href="deconnexion.php">Déconnexion</a></li>
         </ul>
       </div>
     </nav>
     <div class="container-fluid">
-      <!--Formulaire de validation des interventions en ajoutant un commentaire et un temps --> 
+      <!--Formulaire de validation des interventions en ajoutant un commentaire et un temps -->
       <form method="post">
         <p> Intervention :
           <select name="intervention" size="1">
@@ -72,9 +72,6 @@
             'inter'=>$inter
           ));
           $message='Modification réussie';
-          echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-        } else {
-          $message='Modification échouée';
           echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
         }
       ?>
