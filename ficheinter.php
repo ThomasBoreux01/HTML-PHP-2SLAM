@@ -46,13 +46,6 @@
         $matricule=!empty($_POST['matricule']) ? $_POST['matricule'] : NULL;
         if ($datevisite){
           $requser = $bdd->query("SELECT * FROM intervention WHERE Date_Visite=$datevisite");
-        }
-        elseif($matricule){
-          $requser = $bdd->query("SELECT * FROM intervention WHERE MatriculeT=$matricule");
-        }
-        elseif($datevisite&&$matricule){
-          $requser = $bdd->query("SELECT * FROM intervention WHERE MatriculeT=$matricule AND Date_Visite=$datevisite");
-        }
       ?>
       <table class="table table-bordered">
         <thead>
@@ -83,6 +76,77 @@
           ?>
         </tbody>
       </table>
+      <?php
+        }
+        elseif($matricule){
+          $requser = $bdd->query("SELECT * FROM intervention WHERE MatriculeT=$matricule");
+      ?>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Numéro de l'intervention</th>
+            <th>Date de visite</th>
+            <th>Heure de visite</th>
+            <th>Matricule</th>
+            <th>Numéro de client</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+            //On affiche les lignes du tableau une à une à l'aide d'une boucle
+            while ($donnees = $requser->fetch())
+            {
+          ?>
+          <tr class="success">
+            <td><?php echo $donnees['Numero_Intervention'];?></td>
+            <td><?php echo $donnees['Date_Visite'];?></td>
+            <td><?php echo $donnees['Heure_Visite'];?></td>
+            <td><?php echo $donnees['MatriculeT'];?></td>
+            <td><?php echo $donnees['Numero_Client'];?></td>
+          </tr>
+          <?php
+            } //fin de la boucle, le tableau contient toute la BDD
+            $requser->closeCursor(); // Termine le traitement de la requête
+          ?>
+        </tbody>
+      </table>
+      <?php
+        }
+        elseif($datevisite&&$matricule){
+          $requser = $bdd->query("SELECT * FROM intervention WHERE MatriculeT=$matricule AND Date_Visite=$datevisite");
+      ?>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Numéro de l'intervention</th>
+            <th>Date de visite</th>
+            <th>Heure de visite</th>
+            <th>Matricule</th>
+            <th>Numéro de client</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+            //On affiche les lignes du tableau une à une à l'aide d'une boucle
+            while ($donnees = $requser->fetch())
+            {
+          ?>
+          <tr class="success">
+            <td><?php echo $donnees['Numero_Intervention'];?></td>
+            <td><?php echo $donnees['Date_Visite'];?></td>
+            <td><?php echo $donnees['Heure_Visite'];?></td>
+            <td><?php echo $donnees['MatriculeT'];?></td>
+            <td><?php echo $donnees['Numero_Client'];?></td>
+          </tr>
+          <?php
+            } //fin de la boucle, le tableau contient toute la BDD
+            $requser->closeCursor(); // Termine le traitement de la requête
+          ?>
+        </tbody>
+      </table>
+      <?php
+        }
+      ?>
     </div>
     <div class="formulaire">
       <form method="post">
