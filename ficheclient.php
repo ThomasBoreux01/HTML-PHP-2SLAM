@@ -30,8 +30,8 @@
         </div>
         <ul class="nav navbar-nav">
           <li><a href="assistant.php">Accueil</a></li>
-          <li><a href="rechercheclient1.php">Recherche d'un client</a></li>
-          <li><a href="rechercheinter1.php">Recherche d'une intervention</a></li>
+          <li><a href="rechercheclient.php">Recherche d'un client</a></li>
+          <li><a href="rechercheinter.php">Recherche d'une intervention</a></li>
           <li><a href="affecter.php">Affectation des visites</a></li>
           <li><a href="stats1.php">Statistiques des techniciens</a></li>
           <li><a href="creapdf.php">Création d'un PDF</a></li>
@@ -41,11 +41,9 @@
     </nav>
     <div class="container-fluid">
       <?php
-        if(isset($_POST['valider'])){
-          $numclient=$_POST['numclient'];
-          if($numclient){
-            $sql = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
-          }
+        $numclient = $_POST['numclient'];
+        if($numclient){
+          $requser = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
         }
       ?>
       <table class="table table-bordered">
@@ -68,7 +66,7 @@
         <tbody>
           <?php
             //On affiche les lignes du tableau une à une à l'aide d'une boucle
-            while ($donnees = $sql->fetch())
+            while ($donnees = $requser->fetch())
             {
           ?>
           <tr class="success">
@@ -87,7 +85,7 @@
           </tr>
           <?php
             } //fin de la boucle, le tableau contient toute la BDD
-            $sql->closeCursor(); // Termine le traitement de la requête
+            $requser->closeCursor(); // Termine le traitement de la requête
           ?>
         </tbody>
       </table>
