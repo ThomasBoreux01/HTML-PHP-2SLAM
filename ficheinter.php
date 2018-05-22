@@ -149,7 +149,7 @@
         }
       ?>
     </div>
-    <div class="formulaire">
+    <div class="container-fluid">
       <form method="post">
         <p> Intervention :
           <select name="intervention" size="1">

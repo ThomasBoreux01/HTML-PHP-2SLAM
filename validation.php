@@ -44,7 +44,7 @@
         <p> Intervention :
           <select name="intervention" size="1">
             <?php
-              $reponse = $bdd->query('SELECT intervention.Numero_Intervention FROM intervention, controler WHERE intervention.Numero_Intervention=controler.Numero_Intervention');
+              $reponse = $bdd->query("SELECT intervention.Numero_Intervention FROM intervention, controler WHERE intervention.Numero_Intervention=controler.Numero_Intervention");
               while ($donnees = $reponse->fetch())
               {
             ?>

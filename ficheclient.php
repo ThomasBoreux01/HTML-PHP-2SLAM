@@ -94,7 +94,7 @@
         }
       ?>
     </div>
-    <div class="formulaire">
+    <div class="container-fluid">
 			<form method='POST'>
         <p> Raison Sociale: <input required="required" type="text" name="raison"></p>
         <p> SIREN: <input required="required" type="text" name="siren"></p>
