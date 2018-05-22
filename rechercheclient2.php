@@ -92,7 +92,7 @@
     </div>
     <div class="formulaire">
 			<form action="rechercheclient3.php" method='POST'>
-        <input name="numclient" type="hidden" value=<?php $numclient;?>
+        <input name="numclient" type="hidden" value=<?php echo $numclient;?>>
 				<button type="submit" class="btn btn-primary btn-block btn-large" name="modifier">Modifier</button>
 			</form>
 		</div>
