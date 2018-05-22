@@ -95,6 +95,7 @@
     </div>
     <div class="container-fluid">
 			<form method='POST'>
+        <?php echo "<input required=\"required\" type=\"hidden\" name=\"numeroclient\" value=\""$numclient"\">" ?>
         <p> Raison Sociale: <input required="required" type="text" name="raison"></p>
         <p> SIREN: <input required="required" type="text" name="siren"></p>
         <p> Code APE: <input required="required" type="text" name="codeape"></p>
@@ -113,6 +114,7 @@
   </body>
   <?php
     if(isset($_POST['valider'])){
+      $numeroclient = $_POST["numeroclient"];
       $raison = $_POST["raison"];
       $siren = $_POST["siren"];
       $codeape = $_POST["codeape"];
@@ -124,7 +126,7 @@
       $distance = $_POST["distancekm"];
       $numcontrat = $_POST["numcontrat"];
       $numagence = $_POST["numagence"];
-      $sql = $bdd->prepare("UPDATE client SET Raison_Sociale= :raison, Siren= :siren, Code_Ape= :codeape, Adresse= :adresse, Telephone_Client= :telephone, Fax_Client= :fax, Email= :email, Duree_Deplacement= :duree, Distance_KM= :distance, Numero_de_contrat= :numcontrat, Numero_Agence= :numagence WHERE Numero_Client= :numclient");
+      $sql = $bdd->prepare("UPDATE client SET Raison_Sociale= :raison, Siren= :siren, Code_Ape= :codeape, Adresse= :adresse, Telephone_Client= :telephone, Fax_Client= :fax, Email= :email, Duree_Deplacement= :duree, Distance_KM= :distance, Numero_de_contrat= :numcontrat, Numero_Agence= :numagence WHERE Numero_Client= :numeroclient");
       $sql->execute(array(
         'raison'=>$raison,
         'siren'=>$siren,
@@ -137,7 +139,7 @@
         'distance'=>$distance,
         'numcontrat'=>$numcontrat,
         'numagence'=>$numagence,
-        'numclient'=>$numclient,
+        'numeroclient'=>$numeroclient,
       ));
     }
   ?>
