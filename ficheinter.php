@@ -42,8 +42,8 @@
     </nav>
     <div class="container-fluid">
       <?php
-        $datevisite=$_POST['dateinter'];
-        $matricule=$_POST['matricule'];
+        $datevisite=!empty($_POST['dateinter']) ? $_POST['dateinter'] : NULL;
+        $matricule=!empty($_POST['matricule']) ? $_POST['matricule'] : NULL;
         if ($datevisite){
           $requser = $bdd->query("SELECT * FROM intervention WHERE Date_Visite=$datevisite");
         }

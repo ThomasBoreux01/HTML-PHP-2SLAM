@@ -41,7 +41,7 @@
     </nav>
     <div class="container-fluid">
       <?php
-        $numclient = $_POST['numclient'];
+        $numclient = !empty($_POST['numclient']) ? $_POST['numclient'] : NULL;
         if($numclient){
           $requser = $bdd->query("SELECT * FROM client where Numero_Client=$numclient");
         }
