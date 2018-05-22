@@ -13,12 +13,12 @@
       $userinfo = $requser -> fetch();
       if($login == 'assistant' AND $userexist == 1)
       {
-        $_SESSION['login']=$userinfo['login'];
+        $_SESSION['nom']=$userinfo['nom'];
         header("Location: assistant.php");
       }
       elseif($login == 'tec' AND $userexist ==1)
       {
-        $_SESSION['login']=$userinfo['login'];
+        $_SESSION['nom']=$userinfo['nom'];
         header("Location: agent.php");
       }
       else {
