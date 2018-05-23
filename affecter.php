@@ -47,10 +47,12 @@
         Choisir le technicien a affecté :
 				<select id="technicien" name="technicien">
 					<?php
-            $reponse = $bdd->query('SELECT technicien.MatriculeT As MatriculeT FROM technicien, client, intervention WHERE technicien.Numero_Agence=client.Numero_Agence AND client.Numero_Client=intervention.Numero_Client');
+            $reponse = $bdd->query('SELECT MatriculeT,PrenomT,NomT FROM technicien');
             while ($donnees = $reponse->fetch()){
-              $Matricule = $donnees['MatriculeT'];
-              echo "<OPTION VALUE='$Matricule'> $Matricule </OPTION>\n";
+              //$Matricule = $donnees['MatriculeT'];
+              //$v1 = $donnees['NomT'];
+              //$v2 = $donnees['PrenomT']; ?>
+              <option value=" <?php echo $donnees['MatriculeT']; ?>"> <?php echo $donnees['MatriculeT'] ?> - <?php echo $donnees['NomT']?> <?php echo $donnees['PrenomT']?></option>;<?php
             }
             $reponse->closeCursor();
             ?>
