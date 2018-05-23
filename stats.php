@@ -58,7 +58,7 @@
         </p>
         <p> Mois :
           <select name="mois" size="1">
-					  <option value="1" selected>Janvier</option>
+			<option value="1" selected>Janvier</option>
             <option value="2">Février</option>
             <option value="3">Mars</option>
             <option value="4">Avril</option>
@@ -70,7 +70,7 @@
             <option value="10">Octobre</option>
             <option value="11">Novembre</option>
             <option value="12">Décembre</option>
-				  </select>
+		</select>
         </p>
 				<button type="submit" class="btn btn-primary btn-block btn-large" name="visualiser">Visualiser</button>
 			</form>
@@ -79,7 +79,7 @@
           $technicien = !empty($_POST['technicien']) ? $_POST['technicien'] : NULL;
           $mois = !empty($_POST['mois']) ? $_POST['mois'] : NULL;
           if($technicien&&$mois){
-            $requser = $bdd->query("SELECT COUNT(intervention.Numero_Intervention) AS Numero_Intervention, SUM(intervention.Heure_Visite) AS Heure_Visite, MONTH(intervention.Date_Visite) AS Mois, YEAR(intervention.Date_Visite) AS Annee FROM intervention WHERE intervention.MatriculeT=$technicien");
+            $requser = $bdd->query("SELECT COUNT(intervention.Numero_Intervention) AS Numero_Intervention, SUM(intervention.Heure_Visite) AS Heure_Visite, MONTH(intervention.Date_Visite) AS Mois, YEAR(intervention.Date_Visite) AS Annee FROM intervention WHERE intervention.MatriculeT=$technicien");}
       ?>
       <table class="table table-bordered">
         <thead>
@@ -116,9 +116,10 @@
         </tbody>
       </table>
       <?php
-        }
+       } 
       ?>
 		</div>
+	
   </body>
   <script src="/www/bootstrap/js/jquery.js"></script>
   <script src="/www/bootstrap/js/bootstrap.min.js"></script>
